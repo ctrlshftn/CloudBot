@@ -128,6 +128,8 @@ def test_badwords(event, db, conn, message):
                 "{}, congratulations you've won!".format(
                     event.nick),
                 event.chan)
+            if event.chan == "#conversations":
+                message("{} found a bad word. You can remove '{}' from the list".format(event.nick, word), "#conversationsmods")
             conn.send(out)
         else:
             pass

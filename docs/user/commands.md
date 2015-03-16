@@ -1,6 +1,6 @@
-gonzo-test Command list
+gonzobot Command list
 ------
-**8ball (8, eightball):** &lt;question&gt; - asks the all knowing magic electronic eight ball &lt;question&gt;
+**8ball (eightball, 8):** &lt;question&gt; - asks the all knowing magic electronic eight ball &lt;question&gt;
 
 **about**: -- Gives information about CloudBot. Use .about license for licensing information
 
@@ -12,7 +12,7 @@ gonzo-test Command list
 
 **antonym**: &lt;word&gt; -- Returns a list of antonyms for &lt;word&gt;.
 
-**ask (cb, cleverbot):**  &lt;question&gt; -- Asks Cleverbot &lt;question&gt; 
+**ask (gonzobot, cleverbot, cb):**  &lt;question&gt; -- Asks Cleverbot &lt;question&gt; 
 
 **ban**: [channel] &lt;user&gt; - bans &lt;user&gt; in [channel], or in the caller's channel if no channel is specified ( *Permission required:* op_ban, op)
 
@@ -112,11 +112,11 @@ gonzo-test Command list
 
 **fact**: Gets a random fact about numbers or dates.
 
-**feed (rss, news):** &lt;feed&gt; -- Gets the first three items from the RSS/ATOM feed &lt;feed&gt;.
+**feed (news, rss):** &lt;feed&gt; -- Gets the first three items from the RSS/ATOM feed &lt;feed&gt;.
 
 **flip**: &lt;text&gt; -- Flips &lt;text&gt; over.
 
-**flirt (jackmeoff, sexup):** &lt;user&gt; - flirts with &lt;user&gt;
+**flirt (sexup, jackmeoff):** &lt;user&gt; - flirts with &lt;user&gt;
 
 **flushlog**: Command has no documentation. ( *Permission required:* botcontrol)
 
@@ -170,7 +170,7 @@ gonzo-test Command list
 
 **imgur**: [search term] / [/r/subreddit] / [/user/username] / memes / random - returns a link to a random imgur image based
 
-**imguralbum (album, multiimgur, imgalbum):** [search term] / [/r/subreddit] / [/user/username] / memes / random - returns a link to lots of random images
+**imguralbum (multiimgur, imgalbum, album):** [search term] / [/r/subreddit] / [/user/username] / memes / random - returns a link to lots of random images
 
 **info**: &lt;factoid&gt; - shows the source of a factoid
 
@@ -196,7 +196,7 @@ gonzo-test Command list
 
 **lart**: &lt;user&gt; - LARTs &lt;user&gt;
 
-**lastfm (np, l):** [user] [dontsave] - displays the now playing (or last played) track of LastFM user [user]
+**lastfm (l, np):** [user] [dontsave] - displays the now playing (or last played) track of LastFM user [user]
 
 **lastfmcompare (compare, lc):** [user] ([user] optional) - displays the now playing (or last played) track of LastFM user [user]
 
@@ -208,7 +208,7 @@ gonzo-test Command list
 
 **listbad**: Returns a list of bad words specify a channel to see words for a particular channel ( *Permission required:* badwords)
 
-**listfactoids**: - lists all available factoids ( *Permission required:* listfactoids)
+**listfacts**: - lists all available factoids
 
 **listregex**: Command has no documentation. ( *Permission required:* botcontrol)
 
@@ -232,7 +232,7 @@ gonzo-test Command list
 
 **mcstatus**: - gets the status of various Mojang (Minecraft) servers
 
-**mcuser (mcpaid, haspaid):** &lt;username&gt; - gets information about the Minecraft user &lt;account&gt;
+**mcuser (haspaid, mcpaid):** &lt;username&gt; - gets information about the Minecraft user &lt;account&gt;
 
 **mcwiki**: mcwiki &lt;phrase&gt; - gets the first paragraph of the Minecraft Wiki article on &lt;phrase&gt;
 
@@ -272,7 +272,7 @@ gonzo-test Command list
 
 **nk**: outputs a random North Korea propoganda slogan
 
-**note (notes, todo):** &lt;add|list|get|del|clear&gt; args - manipulates your list of notes
+**note (todo, notes):** &lt;add|list|get|del|clear&gt; args - manipulates your list of notes
 
 **octopart (octo):** octopart &lt;keyword&gt; -- Search for any part on the Octopart database.
 
@@ -328,7 +328,7 @@ gonzo-test Command list
 
 **regexstatus**: Command has no documentation. ( *Permission required:* botcontrol)
 
-**remind (reminder, in):** &lt;1 minute, 30 seconds&gt;: &lt;do task&gt; -- reminds you to &lt;do task&gt; in &lt;1 minute, 30 seconds&gt;
+**remind (in, reminder):** &lt;1 minute, 30 seconds&gt;: &lt;do task&gt; -- reminds you to &lt;do task&gt; in &lt;1 minute, 30 seconds&gt;
 
 **remove**: [channel] &lt;user&gt; - force removes &lt;user&gt; from [channel], or in the caller's channel if no channel is specified ( *Permission required:* op_rem, op)
 
@@ -398,9 +398,7 @@ gonzo-test Command list
 
 **topic**: [channel] &lt;topic&gt; - changes the topic to &lt;topic&gt; in [channel], or in the caller's channel ( *Permission required:* op_topic, op)
 
-**topten (loved, pointstop):** .topten or .pointstop prints the top 10 things with the highest points in the channel. To see the top 10 items in all of the channels the bot sits in use .topten global.
-
-**translate**: [source language [target language]] &lt;sentence&gt; - translates &lt;sentence&gt; from source language (default autodetect)
+**topten (pointstop, loved):** .topten or .pointstop prints the top 10 things with the highest points in the channel. To see the top 10 items in all of the channels the bot sits in use .topten global.
 
 **tv (tv_next):** tv &lt;series&gt; -- Get the next episode of &lt;series&gt;.
 
@@ -444,13 +442,13 @@ gonzo-test Command list
 
 **whois**: &lt;domain&gt; -- Does a whois query on &lt;domain&gt;.
 
-**wiki (w, wikipedia):** wiki &lt;phrase&gt; -- Gets first sentence of Wikipedia article on &lt;phrase&gt;.
+**wiki (wikipedia, w):** wiki &lt;phrase&gt; -- Gets first sentence of Wikipedia article on &lt;phrase&gt;.
 
 **wisdom**: words of wisdom from various bathroom stalls.
 
 **wnba**: wnba &lt;team city&gt; gets the score or next scheduled game for the specified team. If no team is specified all games will be included.
 
-**wolframalpha (convert, wa, ca, calc, math):** w&lt;query&gt; -- Computes &lt;query&gt; using Wolfram Alpha.
+**wolframalpha (wa, ca, math, convert, calc):** w&lt;query&gt; -- Computes &lt;query&gt; using Wolfram Alpha.
 
 **word (wordoftheday):** returns the word of the day. To see past word of the day enter use the format yyyy-MM-dd. The specified date must be after 2009-08-10.
 
@@ -472,5 +470,5 @@ gonzo-test Command list
 
 **youtime (ytime):** youtime &lt;query&gt; -- Gets the total run time of the first YouTube search result for &lt;query&gt;.
 
-**youtube (yt, you, y):** youtube &lt;query&gt; -- Returns the first YouTube search result for &lt;query&gt;.
+**youtube (you, yt, y):** youtube &lt;query&gt; -- Returns the first YouTube search result for &lt;query&gt;.
 

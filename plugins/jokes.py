@@ -89,3 +89,14 @@ def zombs(conn):
     """prints some fucked up shit."""
     out = "\u2299\u2299\u0505\u0F0D\u0020\u0E88\u0020\u25DE\u0C6A\u25DF\u0E88\u0020\u0F0D\u0648"
     return out
+
+@hook.command("awesome", "iscool", "cool")
+def awesome(text, message):
+    """Prints a webpage to show <nick> how awesome they are."""
+    nick_re = re.compile("^[A-Za-z0-9_|.\-\]\[]*$", re.I)
+    link = 'http://{}.is-awesome.cool/{}'
+    nick = text.split(' ')[0]
+    if nick_re.match(nick):
+        message(link.format(nick, nick))
+    else:
+        return "Sorry I can't tell {} how awesome they are.".format(nick)

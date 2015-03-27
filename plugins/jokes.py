@@ -83,3 +83,9 @@ def boobies(text, conn):
     if out == text.strip():
         return "Sorry I couldn't turn anything in '{}' into boobs for you.".format(out)
     return out
+
+@hook.command("zombs", autohelp=False)
+def zombs(conn):
+    """prints some fucked up shit."""
+    out = "\u2299\u2299\u0505\u0F0D\u0020\u0E88\u0020\u25DE\u0C6A\u25DF\u0E88\u0020\u0F0D\u0648"
+    return out

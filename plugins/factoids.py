@@ -102,7 +102,6 @@ def remember(text, nick, db, notice, async):
 @hook.command("f", "forget", permissions=["delfactoid"])
 def forget(text, db, async, notice):
     """<word> - forgets previously remembered <word>"""
-
     data = factoid_cache.get(text)
 
     if data:
@@ -132,19 +131,20 @@ factoid_re = re.compile(r'^{} ?(.+)'.format(re.escape(FACTOID_CHAR)), re.I)
 
 @asyncio.coroutine
 @hook.regex(factoid_re)
-def factoid(match, async, event, message, action):
+def factoid(match, chan, async, event, message, action):
     """<word> - shows what data is associated with <word>"""
 
     # split up the input
     split = match.group(1).strip().split(" ")
-    factoid_id = split[0].lower()
+    factoid_id = split[0]
 
     if len(split) >= 1:
         arguments = " ".join(split[1:])
     else:
         arguments = ""
 
-    if factoid_id in factoid_cache:
+    # added protection for conversations facts until plugin is rewritten.
+    if (factoid_id in factoid_cache and chan.lower() in ['bloodygonzo','scarletangel', 'alicia', '#conversations', '#conversationsmods'])  or factoid_id == "commands":
         data = factoid_cache[factoid_id]
         # factoid pre-processors
         if data.startswith("<py>"):
@@ -174,7 +174,7 @@ def factoid(match, async, event, message, action):
 
 
 @asyncio.coroutine
-@hook.command(autohelp=False, permissions=["listfactoids"])
+@hook.command("listfacts", autohelp=False)
 def listfactoids(notice):
     """- lists all available factoids"""
     reply_text = []

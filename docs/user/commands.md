@@ -1,6 +1,6 @@
 gonzobot Command list
 ------
-**8ball (eightball, 8):** &lt;question&gt; - asks the all knowing magic electronic eight ball &lt;question&gt;
+**8ball (8, eightball):** &lt;question&gt; - asks the all knowing magic electronic eight ball &lt;question&gt;
 
 **about**: -- Gives information about CloudBot. Use .about license for licensing information
 
@@ -138,7 +138,7 @@ gonzobot Command list
 
 **googl**: &lt;url&gt; [custom] - shorten &lt;url&gt; using goo.gl with [custom] as an option custom shortlink,
 
-**google (g, search):** &lt;query&gt; - returns the first google search result for &lt;query&gt;
+**google (search, g):** &lt;query&gt; - returns the first google search result for &lt;query&gt;
 
 **googleimage (gis, image):** &lt;query&gt; - returns the first google image result for &lt;query&gt;
 
@@ -186,6 +186,8 @@ gonzobot Command list
 
 **join**: &lt;channel&gt; - joins &lt;channel&gt; ( *Permission required:* botcontrol)
 
+**karma (ruser):** karma &lt;reddituser&gt; will return the information about the specified reddit username
+
 **kernel**: - gets a list of linux kernel versions
 
 **kick**: [channel] &lt;user&gt; - kicks &lt;user&gt; from [channel], or from the caller's channel if no channel is specified ( *Permission required:* op_kick, op)
@@ -196,7 +198,7 @@ gonzobot Command list
 
 **lart**: &lt;user&gt; - LARTs &lt;user&gt;
 
-**lastfm (l, np):** [user] [dontsave] - displays the now playing (or last played) track of LastFM user [user]
+**lastfm (np, l):** [user] [dontsave] - displays the now playing (or last played) track of LastFM user [user]
 
 **lastfmcompare (compare, lc):** [user] ([user] optional) - displays the now playing (or last played) track of LastFM user [user]
 
@@ -249,6 +251,8 @@ gonzobot Command list
 **mlia**: - gets a random quote from MyLifeIsAverage.com
 
 **mm (rmpoint):** .rmpoint or (.mm) &lt;thing&gt; subtracts a point from the &lt;thing&gt;
+
+**mods (moderates):** This plugin prints the list of subreddits a user moderates listed in a reddit users profile. Private subreddits will not be listed.
 
 **munge**: &lt;text&gt; -- Munges up &lt;text&gt;.
 
@@ -328,7 +332,7 @@ gonzobot Command list
 
 **regexstatus**: Command has no documentation. ( *Permission required:* botcontrol)
 
-**remind (in, reminder):** &lt;1 minute, 30 seconds&gt;: &lt;do task&gt; -- reminds you to &lt;do task&gt; in &lt;1 minute, 30 seconds&gt;
+**remind (reminder, in):** &lt;1 minute, 30 seconds&gt;: &lt;do task&gt; -- reminds you to &lt;do task&gt; in &lt;1 minute, 30 seconds&gt;
 
 **remove**: [channel] &lt;user&gt; - force removes &lt;user&gt; from [channel], or in the caller's channel if no channel is specified ( *Permission required:* op_rem, op)
 
@@ -372,11 +376,15 @@ gonzobot Command list
 
 **steam**: steam [Takes a Steam ID_64 formatted ID and returns a ID_32 formatted IDsearch] - Search for specified
 
-**steamid (steamuser, su, sid):** steamid &lt;username&gt; -- gets the steam ID of &lt;username&gt;. Uses steamcommunity.com/id/&lt;nickname&gt;. 
+**steamid (su, sid, steamuser):** steamid &lt;username&gt; -- gets the steam ID of &lt;username&gt;. Uses steamcommunity.com/id/&lt;nickname&gt;. 
 
 **stock**: &lt;symbol&gt; -- gets stock information
 
 **stop (quit):** [reason] - stops me with [reason] as its quit message. ( *Permission required:* botcontrol)
+
+**subinfo (subreddit):** subinfo &lt;subreddit&gt; fetches information about the specified subreddit. Do not include /r/ when specifying a subreddit.
+
+**submods (rmods):** submods &lt;subreddit&gt; prints the moderators of the specified subreddit. Do not include /r/ when specifying a subreddit.
 
 **suggest**: suggest &lt;phrase&gt; -- Gets suggested phrases for a google search
 
@@ -406,7 +414,7 @@ gonzobot Command list
 
 **twitch**: Command has no documentation.
 
-**twitter (twatter, tw):** twitter &lt;user&gt; [n] -- Gets last/[n]th tweet from &lt;user&gt;
+**twitter (tw, twatter):** twitter &lt;user&gt; [n] -- Gets last/[n]th tweet from &lt;user&gt;
 
 **twuser (twinfo):** twuser &lt;user&gt; -- Get info on the Twitter user &lt;user&gt;
 
@@ -442,23 +450,23 @@ gonzobot Command list
 
 **whois**: &lt;domain&gt; -- Does a whois query on &lt;domain&gt;.
 
-**wiki (wikipedia, w):** wiki &lt;phrase&gt; -- Gets first sentence of Wikipedia article on &lt;phrase&gt;.
+**wiki (w, wikipedia):** wiki &lt;phrase&gt; -- Gets first sentence of Wikipedia article on &lt;phrase&gt;.
 
 **wisdom**: words of wisdom from various bathroom stalls.
 
 **wnba**: wnba &lt;team city&gt; gets the score or next scheduled game for the specified team. If no team is specified all games will be included.
 
-**wolframalpha (wa, ca, math, convert, calc):** w&lt;query&gt; -- Computes &lt;query&gt; using Wolfram Alpha.
+**wolframalpha (math, ca, calc, wa, convert):** w&lt;query&gt; -- Computes &lt;query&gt; using Wolfram Alpha.
 
 **word (wordoftheday):** returns the word of the day. To see past word of the day enter use the format yyyy-MM-dd. The specified date must be after 2009-08-10.
 
 **wordrandom (randomword):** Grabs a random word from wordnik.com
 
-**wordusage (wordexample, usage):** &lt;word&gt; -- Returns an example sentence showing the usage of &lt;word&gt;.
+**wordusage (usage, wordexample):** &lt;word&gt; -- Returns an example sentence showing the usage of &lt;word&gt;.
 
 **wouldyou**: Asks a would you rather question
 
-**wpass (wordpass, wordpassword):** [length] - generates an easy to remember password with [length] (default 4) commonly used words
+**wpass (wordpassword, wordpass):** [length] - generates an easy to remember password with [length] (default 4) commonly used words
 
 **wrainbow**: &lt;text&gt; -- Gives each word in &lt;text&gt; rainbow colors.
 
@@ -470,5 +478,7 @@ gonzobot Command list
 
 **youtime (ytime):** youtime &lt;query&gt; -- Gets the total run time of the first YouTube search result for &lt;query&gt;.
 
-**youtube (you, yt, y):** youtube &lt;query&gt; -- Returns the first YouTube search result for &lt;query&gt;.
+**youtube (y, yt, you):** youtube &lt;query&gt; -- Returns the first YouTube search result for &lt;query&gt;.
+
+**zombs**: prints some fucked up shit.
 

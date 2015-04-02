@@ -14,9 +14,10 @@ def init(db):
 
 
 @hook.command(autohelp=False)
-def horoscope(text, db, bot, notice, nick):
+def horoscope(text, db, bot, notice, nick, chan):
     """<sign> - get your horoscope"""
-
+    if chan in ["#islam", "#stopdrinking"]:
+        return "I didn't think people in here cared about horoscopes."
     headers = {'User-Agent': bot.user_agent}
 
     # check if the user asked us not to save his details

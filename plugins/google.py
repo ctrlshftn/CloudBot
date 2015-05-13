@@ -3,6 +3,7 @@ import random
 from cloudbot import hook
 from cloudbot.util import http, formatting
 
+opt_out = ['#anxiety']
 
 def api_get(kind, query):
     """Use the RESTful Google Search API"""
@@ -12,9 +13,10 @@ def api_get(kind, query):
 
 
 @hook.command("googleimage", "gis", "image")
-def googleimage(text):
+def googleimage(text, chan):
     """<query> - returns the first google image result for <query>"""
-
+    if chan in opt_out:
+        return
     parsed = api_get('images', text)
     if not 200 <= parsed['responseStatus'] < 300:
         raise IOError('error searching for images: {}: {}'.format(parsed['responseStatus'], ''))

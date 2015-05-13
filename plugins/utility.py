@@ -27,6 +27,7 @@ import binascii
 from cloudbot import hook
 from cloudbot.util import formatting, web, colors
 
+opt_out = ['#anxiety']
 
 COLORS = collections.OrderedDict([
     ('red', '\x0304'),
@@ -217,8 +218,10 @@ def leet(text):
 
 # Based on plugin by FurCode - <https://github.com/FurCode/RoboCop2>
 @hook.command
-def derpify(text):
+def derpify(text, chan):
     """derpify <text> - returns some amusing responses from your input."""
+    if chan in opt_out:
+        return
     string = text.upper()
     pick_the = random.choice(["TEH", "DA"])
     pick_e = random.choice(["E", "3", "A"])
@@ -245,8 +248,10 @@ def color_parse(text):
 
 # colors - based on code by Reece Selwood - <https://github.com/hitzler/homero>
 @hook.command
-def rainbow(text):
+def rainbow(text, chan):
     """<text> -- Gives <text> rainbow colors."""
+    if chan in opt_out:
+        return
     text = str(text)
     text = strip(text)
     col = list(COLORS.items())
@@ -261,8 +266,10 @@ def rainbow(text):
 
 
 @hook.command
-def wrainbow(text):
+def wrainbow(text, chan):
     """<text> -- Gives each word in <text> rainbow colors."""
+    if chan in opt_out:
+        return
     text = str(text)
     col = list(COLORS.items())
     text = strip(text).split(' ')
@@ -274,8 +281,10 @@ def wrainbow(text):
 
 
 @hook.command
-def usa(text):
+def usa(text, chan):
     """<text> -- Makes <text> more patriotic."""
+    if chan in opt_out:
+        return
     text = strip(text)
     c = [COLORS['red'], '\x0300', COLORS['blue']]
     l = len(c)

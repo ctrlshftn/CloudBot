@@ -10,6 +10,7 @@ from cloudbot.util import textgen
 
 nick_re = re.compile("^[A-Za-z0-9_|.\-\]\[\{\}]*$", re.I)
 
+opt_out = ['#anxiety']
 
 def is_valid(target):
     """ Checks if a string is a valid IRC nick. """
@@ -55,9 +56,12 @@ def load_attacks(bot):
 
 @asyncio.coroutine
 @hook.command
-def lart(text, conn, nick, action):
+def lart(text, conn, chan, nick, action):
     """<user> - LARTs <user>"""
     target = text.strip()
+    # do not activate command for channels that opt out.
+    if chan in opt_out:
+        return
 
     if not is_valid(target):
         return "I can't attack that."
@@ -74,9 +78,11 @@ def lart(text, conn, nick, action):
 
 @asyncio.coroutine
 @hook.command("flirt", "sexup", "jackmeoff")
-def flirt(text, conn, nick, message):
+def flirt(text, conn, nick, chan, message):
     """<user> - flirts with <user>"""
     target = text.strip()
+    if chan in opt_out:
+        return
 
     if not is_valid(target):
         return "I can't attack that."
@@ -90,9 +96,11 @@ def flirt(text, conn, nick, message):
 
 @asyncio.coroutine
 @hook.command
-def kill(text, conn, nick, action):
+def kill(text, conn, nick, chan, action):
     """<user> - kills <user>"""
     target = text.strip()
+    if chan in opt_out:
+        return
 
     if not is_valid(target):
         return "I can't attack that."
@@ -109,9 +117,11 @@ def kill(text, conn, nick, action):
 
 @asyncio.coroutine
 @hook.command
-def slap(text, action, nick, conn, notice):
+def slap(text, action, nick, chan, conn, notice):
     """<user> -- Makes the bot slap <user>."""
     target = text.strip()
+    if chan in opt_out:
+        return
 
     if not is_valid(target):
         return "I can't attack that."
@@ -131,18 +141,22 @@ def slap(text, action, nick, conn, notice):
 @hook.command(autohelp=False)
 def nk(chan, message):
     """outputs a random North Korea propoganda slogan"""
+    if chan in opt_out:
+        return
     index = random.randint(0,len(north_korea)-1)
     slogan = north_korea[index]
     message(slogan, chan)
 
 @asyncio.coroutine
 @hook.command()
-def insult(text, conn, nick, notice, message):
+def insult(text, conn, nick, chan, notice, message):
     """<user> - insults <user>
     :type text: str
     :type conn: cloudbot.client.Client
     :type nick: str
     """
+    if chan in opt_out:
+        return
     target = text.strip()
 
     if " " in target:

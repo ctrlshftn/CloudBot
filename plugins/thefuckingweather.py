@@ -20,6 +20,8 @@ from optparse import OptionParser
 import urllib.parse
 import urllib3
 
+opt_out = ['#anxiety']
+
 DEGREE_SYMBOL = "F"
 
 
@@ -75,6 +77,8 @@ def get_weather(text):
 
     If you need a degree symbol, you can use thefuckingweather.DEGREE_SYMBOL.
     """
+    if chan in opt_out:
+        return
     # Generate query string
     query = {"where": text}
 #    if celsius:

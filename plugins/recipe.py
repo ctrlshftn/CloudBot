@@ -11,6 +11,8 @@ base_url = "http://www.cookstr.com"
 search_url = base_url + "/searches"
 random_url = search_url + "/surprise"
 
+opt_out = ['#anxiety']
+
 # set this to true to censor this plugin!
 censor = True
 phrases = [
@@ -55,8 +57,10 @@ def get_data(url):
 
 
 @hook.command(autohelp=False)
-def recipe(text):
+def recipe(text, chan):
     """[term] - gets a recipe for [term], or gets a random recipe if no term is specified"""
+    if chan in opt_out:
+        return
     if text:
         # get the recipe URL by searching
         try:

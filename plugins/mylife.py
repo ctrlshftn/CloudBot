@@ -9,7 +9,7 @@ from cloudbot import hook
 
 fml_cache = []
 mlia_cache = []
-
+opt_out = ['#anxiety']
 
 @asyncio.coroutine
 def refresh_fml_cache(loop):
@@ -50,9 +50,10 @@ def initial_refresh(loop):
 
 @asyncio.coroutine
 @hook.command(autohelp=False)
-def fml(reply, loop):
+def fml(reply, chan, loop):
     """- gets a random quote from fmyfife.com"""
-
+    if chan in opt_out:
+        return
     # grab the last item in the fml cache and remove it
     fml_id, text = fml_cache.pop()
     # reply with the fml we grabbed

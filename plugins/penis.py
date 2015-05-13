@@ -7,7 +7,7 @@ shaft = ['=', '==', '===', '====', '=====', '========', '///////////////////////
 head = ['D', 'Q', '>', '|\u2283' '\u22d1', '\u22d9', '\u22d7']
 emission = ['~ ~ ~ ~', '~ * ~ &', '', '*~* *~* %']
 bodypart = ['face', 'glasses', 'thigh', 'tummy', 'back', 'hiney', 'hair', 'boobs', 'tongue']
-optin = ['#conversations', '#thelair', '#conversationsmods', '#thelairmods', '#nosleepooc', '#downthepub', '#misunderstood', '##flotwig']
+optin = ['#conversations', '#thelair', '#conversationsmods', '#thelairmods', '#nosleepooc', '#downthepub', '#misunderstood', '##flotwig', '##partymansion', '#redditsquaredcircle', '#android']
 
 @hook.command(autohelp=False)
 def penis(text, message, action, chan):

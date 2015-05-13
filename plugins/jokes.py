@@ -5,6 +5,8 @@ import re
 
 from cloudbot import hook
 
+opt_out = ['#anxiety']
+
 @hook.on_start()
 def load_jokes(bot):
     """
@@ -34,14 +36,18 @@ def load_jokes(bot):
         book_puns = [line.strip() for line in f.readlines() if not line.startswith("//")]
 
 @hook.command()
-def yomomma(text, message, conn):
+def yomomma(text, chan, message, conn):
     """input <nick>, tells a yo momma joke to <nick>"""
+    if chan in opt_out:
+        return
     target = text.strip()
     message('{}, {}'.format(target, random.choice(yo_momma).lower()))
 
 @hook.command(autohelp=False)
-def doit(message, conn):
+def doit(message, chan, conn):
     """prints a do it line, example: mathmaticians do with a pencil"""
+    if chan in opt_out:
+        return
     message(random.choice(do_it))
 
 
@@ -75,8 +81,10 @@ def bookpun(message, conn):
     message("{} by {}".format(title, author))
 
 @hook.command("boobs", "boobies")
-def boobies(text, conn):
+def boobies(text, chan, conn):
     """prints boobies!"""
+    if chan in opt_out:
+        return
     boob = "\u2299"
     out = text.strip()
     out = out.replace('o', boob).replace('O', boob).replace('0', boob)
@@ -85,8 +93,10 @@ def boobies(text, conn):
     return out
 
 @hook.command("zombs", autohelp=False)
-def zombs(conn):
+def zombs(conn, chan):
     """prints some fucked up shit."""
+    if chan in opt_out:
+        return
     out = "\u2299\u2299\u0505\u0F0D\u0020\u0E88\u0020\u25DE\u0C6A\u25DF\u0E88\u0020\u0F0D\u0648"
     return out
 

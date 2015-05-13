@@ -25,7 +25,7 @@ table = Table(
     PrimaryKeyConstraint('name', 'chan','network')
     )
 
-opt_out = ['#anxiety', '#physics', '#UkrainianConflict']
+opt_out = ['#anxiety', '#physics', '#UkrainianConflict', '#subredditdrama']
 
 """
 game_status structure 

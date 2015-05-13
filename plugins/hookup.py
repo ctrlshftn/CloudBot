@@ -3,6 +3,8 @@ import time
 
 from cloudbot import hook
 
+opt_out = ['#anxiety']
+
 rooms = ["courtyard", "guest house", "observatory", "theatre", "drawing room", "garage", "spa", "master bedroom", "studio", "pool", "arcade", "beach house", "surf shop", "kitchen", "ballroom", "conservatory", "billiard room", "library", "study", "hallway", "lounge", "dining room", "cellar"]
 weapons = ["a candlestick","an axe", "a pistol", "rope", "gloves", "a horseshoe", "a knife", "a baseball bat", "a chalice", "a dumbbell", "a wrench", "a trophy", "a pipe", "garden shears"]
 
@@ -17,6 +19,8 @@ usrcache = []
 @hook.command(autohelp=False)
 def hookup(db, conn, chan):
     """matches two users from the channel in a sultry scene."""
+    if chan in opt_out:
+        return
     times = time.time() - 86400
     people = db.execute("select name from seen_user where chan = :chan and time > :time", {"chan": chan, "time": times}).fetchall()
     if not people:
@@ -35,6 +39,8 @@ def hookup(db, conn, chan):
 @hook.command(autohelp=False)
 def bite(text, chan, action):
     """bites the specified nick somewhere random."""
+    if chan in opt_out:
+        return
     if not text:
         return "please tell me who to bite."
     name = text.split(' ')[0]

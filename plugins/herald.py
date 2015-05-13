@@ -52,6 +52,8 @@ def welcome(nick, action, message, chan, event, db, conn):
     # chan = event.irc_raw.split('JOIN ')[1].lower()
     # snoonet
     chan = event.irc_raw.split(':')[2].lower()
+    if chan in ['#modtalk', '#casualconversation', '#anxiety']:
+        return
     welcome = db.execute("select quote from herald where name = :name and chan = :chan", {
                          'name': nick.lower(), 'chan': chan.lower()}).fetchone()
     if welcome:
@@ -62,6 +64,8 @@ def welcome(nick, action, message, chan, event, db, conn):
                 text = greet.lower().split(' ')[1]
             out = grab.grabrandom(text, chan, message)
             message(out, chan)
+        elif '\_o<' in greet.replace('\u200b', ''):
+            message("DECOY DUCK --> {}".format(greet), chan)
         else:
             message(welcome[0], chan)
 

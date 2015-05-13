@@ -119,7 +119,7 @@ def unignore(text, db, chan, conn, notice):
         remove_ignore(db, conn.name, chan, target)
 
 
-@hook.command(permissions=["ignore"])
+@hook.command(permissions=["botcontrol"])
 def global_ignore(text, db, conn, notice):
     """<nick|mask> -- ignores all input from <nick|mask> in ALL channels."""
     target = text.lower()
@@ -133,7 +133,7 @@ def global_ignore(text, db, conn, notice):
         add_ignore(db, conn.name, "*", target)
 
 
-@hook.command(permissions=["ignore"])
+@hook.command(permissions=["botcontrol"])
 def global_unignore(text, db, conn, notice):
     """<nick|mask> -- un-ignores all input from <nick|mask> in ALL channels."""
     target = text.lower()

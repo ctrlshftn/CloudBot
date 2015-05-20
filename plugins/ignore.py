@@ -6,7 +6,7 @@ from sqlalchemy import Table, Column, UniqueConstraint, PrimaryKeyConstraint, St
 from cloudbot import hook
 from cloudbot.util import botvars
 
-logchannel = ""
+logchannel = "##gonzobot"
 
 table = Table(
     "ignored",

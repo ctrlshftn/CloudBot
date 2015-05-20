@@ -52,7 +52,7 @@ def welcome(nick, action, message, chan, event, db, conn):
     # chan = event.irc_raw.split('JOIN ')[1].lower()
     # snoonet
     chan = event.irc_raw.split(':')[2].lower()
-    if chan in ['#modtalk', '#casualconversation', '#anxiety']:
+    if chan in ['#modtalk', '#casualconversation', '#anxiety', '#reddit', '#snoonet', '#games' ]:
         return
     welcome = db.execute("select quote from herald where name = :name and chan = :chan", {
                          'name': nick.lower(), 'chan': chan.lower()}).fetchone()
@@ -67,7 +67,7 @@ def welcome(nick, action, message, chan, event, db, conn):
         elif '\_o<' in greet.replace('\u200b', ''):
             message("DECOY DUCK --> {}".format(greet), chan)
         else:
-            message(welcome[0], chan)
+            message(" {}".format(welcome[0]), chan)
 
     # Saying something whenever someone joins can get really spammy
     # else:

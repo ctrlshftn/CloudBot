@@ -3,7 +3,7 @@ import re
 
 from cloudbot import hook
 
-logchannel = ""
+logchannel = "##gonzobot"
 
 @asyncio.coroutine
 @hook.command("groups", "listgroups", "permgroups", permissions=["permissions_users"], autohelp=False)

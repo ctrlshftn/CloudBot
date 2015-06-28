@@ -25,7 +25,7 @@ def check_mode(irc_paramlist, conn, message):
     #message(", ".join(irc_paramlist), "bloodygonzo")
     mode = irc_paramlist[2]
     require_reg = conn.config.get('require_registered_channels', False)
-    if not "r" in mode and conn.name == "snoonet" and require_reg:
+    if not "r" in mode:
         message("I do not stay in unregistered channels", irc_paramlist[1])
         out = "PART {}".format(irc_paramlist[1])
         conn.send(out)
@@ -58,6 +58,13 @@ def onjoin(conn, bot):
             if "censored_strings" in bot.config:
                 bot.config['censored_strings'].append(nickserv_password)
             yield from asyncio.sleep(1)
+
+    # Should we oper up?
+    oper_pw = conn.config.get('oper_pw', False)
+    oper_user = conn.config.get('oper_user', False)
+    if oper_pw and oper_user:
+        out = "oper {} {}".format(oper_user, oper_pw)
+        conn.send(out)
 
     # Set bot modes
     mode = conn.config.get('mode')

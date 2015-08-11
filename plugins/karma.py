@@ -10,6 +10,8 @@ from cloudbot.event import EventType
 karmaplus_re = re.compile('^.*\+\+$')
 karmaminus_re = re.compile('^.*\-\-$')
 db_ready = []
+opt_out = ['#anxiety', '#foreveralonewomen']
+
 
 def db_init(db, conn_name):
     """Check to see if the DB has the herald table. Connection name is for caching the result per connection.
@@ -25,7 +27,8 @@ def db_init(db, conn_name):
 @hook.command("pp", "addpoint")
 def addpoint(text, nick, chan, db, conn):
     """.addpoint or (.pp) <thing> adds a point to the <thing>"""
-    
+    if chan in opt_out:
+         return
     db_init(db, conn.name)
     karma = db.execute("select score from karma where name = :name and chan = :chan and thing = :thing", {'name':nick, 'chan': chan, 'thing': text.lower()}).fetchone()
     if karma:
@@ -52,7 +55,8 @@ def re_addpt(match, nick, chan, db, conn, notice):
 @hook.command("mm", "rmpoint")
 def rmpoint(text, nick, chan, db, conn):
     """.rmpoint or (.mm) <thing> subtracts a point from the <thing>"""
-
+    if chan in opt_out:
+        return
     db_init(db, conn.name)
     karma = db.execute("select score from karma where name = :name and chan = :chan and thing = :thing", {'name':nick, 'chan': chan, 'thing': text.lower()}).fetchone()
     if karma:
@@ -102,6 +106,8 @@ def re_rmpt(match, nick, chan, db, conn, notice):
 def points(text, chan, db, conn):
     """.points <thing> will print the total points for <thing> in the channel."""
     db_init(db, conn.name)
+    if chan in opt_out:
+        return
     score = 0
     karma = ""
     thing = ""
@@ -128,6 +134,8 @@ def points(text, chan, db, conn):
 @hook.command("topten", "pointstop", "loved", autohelp=False)
 def pointstop(text, chan, db, message, conn, notice):
     """.topten or .pointstop prints the top 10 things with the highest points in the channel. To see the top 10 items in all of the channels the bot sits in use .topten global."""
+    if chan in opt_out:
+        return
     db_init(db, conn.name)
     scores = []
     points = defaultdict(int)
@@ -158,6 +166,8 @@ def pointstop(text, chan, db, message, conn, notice):
 @hook.command("bottomten", "pointsbottom", "hated", autohelp=False)
 def pointsbottom(text, chan, db, message, conn, notice):
     """.bottomten or .pointsbottom prints the top 10 things with the highest points in the channel. To see the top 10 items in all of the channels the bot sits in use .topten global."""
+    if chan in opt_out:
+        return
     db_init(db, conn.name)
     scores = []
     points = defaultdict(int)

@@ -29,6 +29,7 @@ def addpoint(text, nick, chan, db, conn):
     """.addpoint or (.pp) <thing> adds a point to the <thing>"""
     if chan in opt_out:
          return
+    text = text.strip()
     db_init(db, conn.name)
     karma = db.execute("select score from karma where name = :name and chan = :chan and thing = :thing", {'name':nick, 'chan': chan, 'thing': text.lower()}).fetchone()
     if karma:
@@ -57,6 +58,7 @@ def rmpoint(text, nick, chan, db, conn):
     """.rmpoint or (.mm) <thing> subtracts a point from the <thing>"""
     if chan in opt_out:
         return
+    text = text.strip()
     db_init(db, conn.name)
     karma = db.execute("select score from karma where name = :name and chan = :chan and thing = :thing", {'name':nick, 'chan': chan, 'thing': text.lower()}).fetchone()
     if karma:
@@ -115,6 +117,7 @@ def points(text, chan, db, conn):
         thing = text[:-7].strip()
         karma = db.execute("select score from karma where thing = :thing and chan like :chan", {'thing': thing.lower(), 'chan':'#%'}).fetchall()
     else:
+        text = text.strip()
         karma = db.execute("select score from karma where thing = :thing and chan = :chan", {'thing': text.lower(), 'chan': chan }).fetchall()
     if karma:
         pos = 0

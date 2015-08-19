@@ -148,6 +148,8 @@ def tell_cmd(text, nick, db, notice, conn):
     query = text.split(' ', 1)
     if query[0].lower() == "paradox":
         return "Paradox doesn't want to hear from me. Just send him a fucking message."
+    if query[0].lower() == "rdv":
+        return "rdv doesn't want to hear from me, if you need something done please ask in #help."
     if len(query) != 2:
         prefix = conn.config("command_prefix")
         notice(prefix[0] + tell_cmd.__doc__)

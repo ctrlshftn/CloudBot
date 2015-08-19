@@ -9,7 +9,7 @@ blacklist = re.compile('.*(reddit\.com|redd.it|youtube.com|youtu.be|spotify.com|
 url_re = re.compile('http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+')
 
 
-opt_in = ['##doctorwho', '#reddit']
+opt_in = ['##doctorwho', '#reddit', '#conversations', '#thelair', '#memenetics', '#rcasualmods', '#nofear', '##neopets', '#foreveralonewomen', '#protectandserve', '#news']
 
 @hook.regex(url_re)
 def print_url_title(match, chan):

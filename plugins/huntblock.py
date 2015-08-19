@@ -1,6 +1,6 @@
 from cloudbot import hook
 
-@hook.command("start", "starthun", autohelp=False)
+@hook.command("duckkic", "starthun", "stophun", autohelp=False)
 def huntfoil():
-    """dummmy command to make sure people use the full starthunt command so OPS can block it if they need to."""
-    return "I think you are looking for .starthunt"
+    """dummmy command to make sure people use the full command so OPS can block it if they need to."""
+    return "please use the full command."

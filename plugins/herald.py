@@ -1,3 +1,4 @@
+import re
 
 from cloudbot import hook
 from cloudbot.event import EventType
@@ -51,24 +52,29 @@ def welcome(nick, action, message, chan, event, db, conn):
     # freenode uncomment then next line
     # chan = event.irc_raw.split('JOIN ')[1].lower()
     # snoonet
+    decoy = re.compile('[oO0öøóȯôőŏᴏ](<|>)')
+    bino_re = re.compile('b+i+n+o+', re.IGNORECASE)
+    offensive_re = re.compile('卐')
     chan = event.irc_raw.split(':')[2].lower()
-    if chan in ['#modtalk', '#casualconversation', '#anxiety', '#reddit', '#snoonet', '#games' ]:
+    if chan in ['#modtalk', '#casualconversation', '#anxiety', '#reddit', '#snoonet', '#games', '#newzealand', '#badsubhub', '#showgoat', '#random', '#xboxone', '#playstation' ]:
         return
     welcome = db.execute("select quote from herald where name = :name and chan = :chan", {
                          'name': nick.lower(), 'chan': chan.lower()}).fetchone()
     if welcome:
         greet = welcome[0]
+        greet = re.sub(bino_re, 'flenny', greet)
+        greet = re.sub(offensive_re, ' freespeech oppression ', greet)
         if greet.lower().split(' ')[0] == ".grabrandom":
             text = ""
             if len(greet.split(' ')) >= 2:
                 text = greet.lower().split(' ')[1]
             out = grab.grabrandom(text, chan, message)
             message(out, chan)
-        elif '\_o<' in greet.replace('\u200b', ''):
+        elif decoy.search(greet.replace('\u200b', '').replace(' ', '')):
             message("DECOY DUCK --> {}".format(greet), chan)
         else:
-            message(" {}".format(welcome[0]), chan)
-
+            message("\u200b {}".format(greet), chan)
+ 
     # Saying something whenever someone joins can get really spammy
     # else:
         # action("welcomes {} to {}".format(nick, chan), chan)

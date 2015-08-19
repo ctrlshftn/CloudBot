@@ -91,9 +91,9 @@ def qrcode(text):
 
 # basic text tools
 
-@hook.command("capitalise", "capitalize")
+@hook.command("capitalize", "capitalise")
 def capitalize(text):
-    """capitalize <string> -- Capitalizes <string>.
+    """<string> -- Capitalizes <string>.
     :type text: str
     """
     return ". ".join([sentence.capitalize() for sentence in text.split(". ")])
@@ -101,25 +101,25 @@ def capitalize(text):
 
 @hook.command
 def upper(text):
-    """upper <string> -- Convert string to uppercase."""
+    """<string> -- Convert string to uppercase."""
     return text.upper()
 
 
 @hook.command
 def lower(text):
-    """lower <string> -- Convert string to lowercase."""
+    """<string> -- Convert string to lowercase."""
     return text.lower()
 
 
 @hook.command
 def titlecase(text):
-    """title <string> -- Convert string to title case."""
+    """<string> -- Convert string to title case."""
     return text.title()
 
 
 @hook.command
 def swapcase(text):
-    """swapcase <string> -- Swaps the capitalization of <string>."""
+    """<string> -- Swaps the capitalization of <string>."""
     return text.swapcase()
 
 
@@ -127,20 +127,20 @@ def swapcase(text):
 
 @hook.command("rot13")
 def rot13_encode(text):
-    """rot13 <string> -- Encode <string> with rot13."""
+    """<string> -- Encode <string> with rot13."""
     encoder = codecs.getencoder("rot-13")
     return encoder(text)[0]
 
 
 @hook.command("base64")
 def base64_encode(text):
-    """base64 <string> -- Encode <string> with base64."""
+    """<string> -- Encode <string> with base64."""
     return base64.b64encode(text.encode()).decode()
 
 
 @hook.command("debase64", "unbase64")
 def base64_decode(text, notice):
-    """unbase64 <string> -- Decode <string> with base64."""
+    """<string> -- Decode <string> with base64."""
     try:
         return base64.b64decode(text.encode()).decode()
     except binascii.Error:
@@ -149,7 +149,7 @@ def base64_decode(text, notice):
 
 @hook.command("isbase64", "checkbase64")
 def base64_check(text):
-    """isbase64 <string> -- Checks if <string> is a valid base64 encoded string"""
+    """<string> -- Checks if <string> is a valid base64 encoded string"""
     try:
         base64.b64decode(text.encode())
     except binascii.Error:
@@ -160,14 +160,14 @@ def base64_check(text):
 
 @hook.command
 def unescape(text):
-    """unescape <string> -- Unicode unescapes <string>."""
+    """<string> -- Unicode unescapes <string>."""
     decoder = codecs.getdecoder("unicode_escape")
     return decoder(text)[0]
 
 
 @hook.command
 def escape(text):
-    """escape <string> -- Unicode escapes <string>."""
+    """<string> -- Unicode escapes <string>."""
     encoder = codecs.getencoder("unicode_escape")
     return encoder(text)[0].decode()
 
@@ -177,7 +177,7 @@ def escape(text):
 
 @hook.command
 def length(text):
-    """length <string> -- Gets the length of <string>"""
+    """<string> -- Gets the length of <string>"""
     return "The length of that string is {} characters.".format(len(text))
 
 
@@ -186,7 +186,7 @@ def length(text):
 
 @hook.command
 def reverse(text):
-    """reverse <string> -- Reverses <string>."""
+    """<string> -- Reverses <string>."""
     return text[::-1]
 
 
@@ -195,7 +195,7 @@ def reverse(text):
 
 @hook.command("hash")
 def hash_command(text):
-    """hash <string> -- Returns hashes of <string>."""
+    """<string> -- Returns hashes of <string>."""
     return ', '.join(x + ": " + getattr(hashlib, x)(text.encode("utf-8")).hexdigest()
                      for x in ['md5', 'sha1', 'sha256'])
 

@@ -52,7 +52,7 @@ def welcome(nick, action, message, chan, event, db, conn):
     # freenode uncomment then next line
     # chan = event.irc_raw.split('JOIN ')[1].lower()
     # snoonet
-    decoy = re.compile('[oO0öøóȯôőŏᴏ](<|>)')
+    decoy = re.compile('[oO0öøóóȯôőŏᴏō](<|>|＜)')
     bino_re = re.compile('b+i+n+o+', re.IGNORECASE)
     offensive_re = re.compile('卐')
     chan = event.irc_raw.split(':')[2].lower()
@@ -70,7 +70,7 @@ def welcome(nick, action, message, chan, event, db, conn):
                 text = greet.lower().split(' ')[1]
             out = grab.grabrandom(text, chan, message)
             message(out, chan)
-        elif decoy.search(greet.replace('\u200b', '').replace(' ', '')):
+        elif decoy.search(greet.replace('\u200b', '').replace(' ', '').replace('\u202f','')):
             message("DECOY DUCK --> {}".format(greet), chan)
         else:
             message("\u200b {}".format(greet), chan)

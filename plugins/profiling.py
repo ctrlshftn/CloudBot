@@ -61,6 +61,7 @@ def get_thread_dump():
             if line:
                 code.append("    {}".format(line.strip()))
         code.append("")  # new line
+    return "\n".join(code)
     return web.paste("\n".join(code), ext='txt')
 
 

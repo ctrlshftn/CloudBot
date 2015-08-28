@@ -11,7 +11,7 @@ url_re = re.compile('http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-
 
 opt_in = ['##doctorwho', '#reddit', '#conversations', '#thelair', '#memenetics', '#rcasualmods', '#nofear', '##neopets', '#foreveralonewomen', '#protectandserve', '#news']
 
-@hook.regex(url_re)
+#@hook.regex(url_re)
 def print_url_title(match, chan):
     if chan not in opt_in:
         return

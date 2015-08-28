@@ -18,7 +18,9 @@ def print_url_title(match, chan):
     if re.search(blacklist, match.group()):
         return
     # It would be a good idea to also include useragent headers in the request
-    r = requests.get(match.group())
+    r = requests.get(match.group(), stream = True)
+    if not r.encoding:
+        return
     html = BeautifulSoup(r.text)
     title = html.title.text.strip()
     out = "Title: \x02{}\x02".format(title)

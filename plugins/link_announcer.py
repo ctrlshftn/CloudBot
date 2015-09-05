@@ -10,7 +10,7 @@ blacklist = re.compile('.*(reddit\.com|redd.it|youtube.com|youtu.be|spotify.com|
 url_re = re.compile('http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+')
 
 
-opt_in = ['##doctorwho', '#reddit', '#conversations', '#thelair', '#memenetics', '#rcasualmods', '#nofear', '##neopets', '#foreveralonewomen', '#protectandserve', '#news', '#staff']
+opt_in = ['##doctorwho', '#reddit', '#conversations', '#thelair', '#memenetics', '#rcasualmods', '#nofear', '##neopets', '#foreveralonewomen', '#protectandserve', '#news', '#staff', '#casualconversation', '#conversationsmods', '#casualmods', '#nosleepooc', '#bingo', '#destinythegame', '#snoonet', '#steamdb', '#islam']
 
 
 traditional = [

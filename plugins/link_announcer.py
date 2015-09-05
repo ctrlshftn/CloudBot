@@ -10,10 +10,8 @@ blacklist = re.compile('.*(reddit\.com|redd.it|youtube.com|youtu.be|spotify.com|
 url_re = re.compile('http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+')
 
 
-opt_in = ['##doctorwho', '#reddit', '#conversations', '#thelair', '#memenetics', '#rcasualmods', '#nofear', '##neopets', '#foreveralonewomen', '#protectandserve', '#news']
+opt_in = ['##doctorwho', '#reddit', '#conversations', '#thelair', '#memenetics', '#rcasualmods', '#nofear', '##neopets', '#foreveralonewomen', '#protectandserve', '#news', '#staff']
 
-@hook.regex(url_re)
-opt_in = []
 
 traditional = [
     (1024 ** 5, 'PB'),

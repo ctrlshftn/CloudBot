@@ -50,7 +50,7 @@ def print_url_title(match, chan):
         html = BeautifulSoup(r.text)
         title = html.title.text.strip()
         try:
-            content = r.headers['content-type']
+            content = r.headers['content-type'].split(';')[0]
         except:
             content = "None"
             pass
@@ -59,5 +59,5 @@ def print_url_title(match, chan):
         except:
             size = "Unknown"
             pass
-        out = "Title: \x02{}\x02, Content Type: \x02{}\x02, Size: \x02{}\x02".format(title, content, size)
+        out = "Title: \x02{}\x02, Content Type: [\x02{}\x02], Size: \x02{}\x02".format(title, content, size)
         return out

@@ -6,7 +6,7 @@ from cloudbot import hook
 
 # This will match ANY we url including youtube, reddit, twitch, etc... Some additional work needs to go into
 # not sending the web request etc if the match also matches an existing web regex.
-blacklist = re.compile('.*(reddit\.com|redd.it|youtube.com|youtu.be|spotify.com|twitter.com|twitch.com|amazon.com|amzn.com|steamcommunity.com|steampowered.com|newegg.com).*', re.I)
+blacklist = re.compile('.*(reddit\.com|redd.it|youtube.com|youtu.be|spotify.com|twitter.com|twitch.tv|amazon.co|amzn.com|steamcommunity.com|steampowered.com|newegg.com).*', re.I)
 url_re = re.compile('http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+')
 
 
@@ -48,19 +48,6 @@ def print_url_title(match, chan):
             out = "Content Type: \x02{}\x02 Size: \x02{}\x02".format(content, size)
             return out
         html = BeautifulSoup(r.text)
-        try:
-            title = html.title.text.strip()
-        except:
-            return
-        try:
-            content = r.headers['content-type'].split(';')[0]
-        except:
-            content = "None"
-            pass
-        try:
-            size = bytesto(r.headers['content-length'])
-        except:
-            size = "Unknown"
-            pass
-        out = "Title: \x02{}\x02, Content Type: [\x02{}\x02], Size: \x02{}\x02".format(title, content, size)
+        title = html.title.text.strip()
+        out = "Title: \x02{}\x02".format(title)
         return out

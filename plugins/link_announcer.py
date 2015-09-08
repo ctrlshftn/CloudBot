@@ -10,7 +10,7 @@ blacklist = re.compile('.*(reddit\.com|redd.it|youtube.com|youtu.be|spotify.com|
 url_re = re.compile('http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+')
 
 
-opt_in = ['##doctorwho', '#reddit', '#conversations', '#thelair', '#memenetics', '#rcasualmods', '#nofear', '##neopets', '#foreveralonewomen', '#protectandserve', '#news', '#staff', '#casualconversation', '#conversationsmods', '#casualmods', '#nosleepooc', '#bingo', '#destinythegame', '#snoonet', '#steamdb', '#islam']
+opt_in = ['##doctorwho', '#reddit', '#conversations', '#thelair', '#rcasualmods', '#nofear', '##neopets', '#foreveralonewomen', '#protectandserve', '#news', '#staff', '#casualconversation', '#conversationsmods', '#casualmods', '#nosleepooc', '#bingo', '#destinythegame', '#snoonet', '#steamdb', '#islam']
 
 
 traditional = [
@@ -48,7 +48,10 @@ def print_url_title(match, chan):
             out = "Content Type: \x02{}\x02 Size: \x02{}\x02".format(content, size)
             return out
         html = BeautifulSoup(r.text)
-        title = html.title.text.strip()
+        try:
+            title = html.title.text.strip()
+        except:
+            return
         try:
             content = r.headers['content-type'].split(';')[0]
         except:

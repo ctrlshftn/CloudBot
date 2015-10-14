@@ -66,7 +66,8 @@ def load_foods(bot):
     :type bot: cloudbot.bot.CloudBot
     """
     global sandwich_data, taco_data, coffee_data, noodles_data, muffin_data, \
-        tea_data, keto_data, beer_data, cheese_data, pancake_data, chicken_data, icecream_data, brekkie_data
+        tea_data, keto_data, beer_data, cheese_data, pancake_data, chicken_data, \
+        icecream_data, brekkie_data
 
     with codecs.open(os.path.join(bot.data_dir, "sandwich.json"), encoding="utf-8") as f:
         sandwich_data = json.load(f)
@@ -101,7 +102,7 @@ def load_foods(bot):
     with codecs.open(os.path.join(bot.data_dir, "chicken.json"), encoding="utf-8") as f:
         chicken_data = json.load(f)
 		
-	with codecs.open(os.path.join(bot.data_dir, "brekkie.json"), encoding="utf-8") as f:
+    with codecs.open(os.path.join(bot.data_dir, "brekkie.json"), encoding="utf-8") as f:
         brekkie_data = json.load(f)
 
     with codecs.open(os.path.join(bot.data_dir, "icecream.json"), encoding="utf-8") as f:

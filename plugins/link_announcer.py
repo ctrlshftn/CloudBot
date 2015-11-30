@@ -4,13 +4,14 @@ from bs4 import BeautifulSoup
 from contextlib import closing
 from cloudbot import hook
 
+
 # This will match ANY we url including youtube, reddit, twitch, etc... Some additional work needs to go into
 # not sending the web request etc if the match also matches an existing web regex.
 blacklist = re.compile('.*(reddit\.com|redd.it|youtube.com|youtu.be|spotify.com|twitter.com|twitch.tv|amazon.co|amzn.com|steamcommunity.com|steampowered.com|newegg.com).*', re.I)
 url_re = re.compile('http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+')
 
 
-opt_in = ['##doctorwho', '#reddit', '#conversations', '#thelair', '#rcasualmods', '#nofear', '##neopets', '#foreveralonewomen', '#protectandserve', '#news', '#staff', '#casualconversation', '#conversationsmods', '#casualmods', '#nosleepooc', '#bingo', '#destinythegame', '#snoonet', '#steamdb', '#islam']
+opt_in = ['##doctorwho', '#reddit', '#conversations', '#thelair', '#rcasualmods', '#nofear', '##neopets', '#foreveralonewomen', '#protectandserve', '#news', '#staff', '#casualconversation', '#conversationsmods', '#casualmods', '#nosleepooc', '#bingo', '#snoonet', '#steamdb', '#islam', 'bloodygonzo', '#youknowthatstuff', '#shenanigans', '#shenanigansmods', '#linuxmasterrace', '#private256', '#breakingparents', '#israel', '#breakingdad']
 
 
 traditional = [

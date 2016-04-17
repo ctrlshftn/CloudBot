@@ -9,7 +9,7 @@ from cloudbot.util import database
 
 search_pages = defaultdict(list)
 
-opt_out = ['#anxiety', '#writingprompts']
+opt_out = ['#anxiety', '#writingprompts', '#drama']
 
 table = Table(
     'grab',

@@ -63,7 +63,8 @@ def lastfm(text, nick, db, bot, notice):
 
     params = {'method': 'user.getrecenttracks',
               'api_key': api_key, 'user': user, 'limit': 1}
-    request = requests.get(api_url, params=params)
+    request = requests.get(api_url, params=params, timeout=3)
+    
 
     if request.status_code != requests.codes.ok:
         return "Failed to fetch info ({})".format(request.status_code)
@@ -138,7 +139,7 @@ def getartisttags(artist, bot):
     api_key = bot.config.get("api_keys", {}).get("lastfm")
     params = { 'method': 'artist.getTopTags', 'api_key': api_key, 'artist': artist,
             'autocorrect': '1'}
-    request = requests.get(api_url, params = params)
+    request = requests.get(api_url, params = params, timeout=3)
     tags = request.json()
 
     if 'tag' in tags['toptags']:
@@ -160,7 +161,7 @@ def getsimilarartists(artist, bot):
     api_key = bot.config.get('api_keys', {}).get('lastfm')
     params = { 'method': 'artist.getsimilar', 'api_key': api_key,
             'artist': artist, 'autocorrect': '1' }
-    request = requests.get(api_url, params = params)
+    request = requests.get(api_url, params = params, timeout=3)
     similar = request.json()
 
     # check it's a list
@@ -176,7 +177,7 @@ def getusertrackplaycount(artist, track, user, bot):
     api_key = bot.config.get("api_keys", {}).get("lastfm")
     params = { 'method': 'track.getInfo', 'api_key': api_key, 'artist': artist,
             'track': track, 'username': user }
-    request = requests.get(api_url, params = params)
+    request = requests.get(api_url, params = params, timeout=3)
     track_info = request.json()
 
     return track_info['track'].get('userplaycount')
@@ -229,7 +230,7 @@ def getartistinfo(artist, bot, user = ''):
             'autocorrect': '1'}
     if user:
         params['username'] = user
-    request = requests.get(api_url, params = params);
+    request = requests.get(api_url, params = params, timeout=3);
     artist = request.json()
     return artist
 
@@ -263,7 +264,7 @@ def lastfmcompare(text, nick, bot,):
         'type2': 'user',
         'value2': user2
     }
-    request = requests.get(api_url, params=params)
+    request = requests.get(api_url, params=params, timeout=3)
 
     if request.status_code != requests.codes.ok:
         return "Failed to fetch info ({})".format(request.status_code)
@@ -313,7 +314,7 @@ def toptrack(text, nick, bot):
         'user': username,
         'limit': 5
     }
-    request = requests.get(api_url, params=params)
+    request = requests.get(api_url, params=params, timeout=3)
 
     if request.status_code != requests.codes.ok:
         return "Failed to fetch info ({})".format(request.status_code)
@@ -351,7 +352,7 @@ def topartists(text, nick, bot):
         'user': username,
         'limit': 5
     }
-    request = requests.get(api_url, params=params)
+    request = requests.get(api_url, params=params, timeout=3)
 
     if request.status_code != requests.codes.ok:
         return "Failed to fetch info ({})".format(request.status_code)
@@ -405,7 +406,7 @@ def topartists(text, nick, db, bot, notice, period):
         'period': period,
         'limit': 10
     }
-    request = requests.get(api_url, params=params)
+    request = requests.get(api_url, params=params, timeout=3)
 
     if request.status_code != requests.codes.ok:
         return "Failed to fetch info ({})".format(request.status_code)

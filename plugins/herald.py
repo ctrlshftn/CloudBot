@@ -57,7 +57,7 @@ def welcome(nick, action, message, chan, event, db, conn):
     bino_re = re.compile('b+i+n+o+', re.IGNORECASE)
     offensive_re = re.compile('卐')
     chan = event.irc_raw.split(':')[2].lower()
-    if chan in ['#modtalk', '#casualconversation', '#anxiety', '#reddit', '#snoonet', '#games', '#newzealand', '#badsubhub', '#showgoat', '#random', '#xboxone', '#playstation' ]:
+    if chan in ['#modtalk', '#casualconversation', '#anxiety', '#reddit', '#snoonet', '#games', '#newzealand', '#badsubhub', '#showgoat', '#random', '#xboxone', '#playstation', '#groove', '#longdistance', '#destinythegame', '#dramaland', '#warhammer', '#r4r', '#redditsquaredcircle', '#sweden', '#drama']:
         return
     welcome = db.execute("select quote from herald where name = :name and chan = :chan", {
                          'name': nick.lower(), 'chan': chan.lower()}).fetchone()

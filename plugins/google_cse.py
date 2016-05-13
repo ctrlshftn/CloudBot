@@ -20,6 +20,7 @@ from cloudbot.util import formatting, filesize
 
 API_CS = 'https://www.googleapis.com/customsearch/v1'
 
+opt_out = ["#sandersforpresident"]
 
 @hook.on_start()
 def load_api(bot):
@@ -55,8 +56,10 @@ def gse(text):
     return u'{} -- \x02{}\x02: "{}"'.format(result['link'], title, content)
 
 @hook.command('gseis', 'gis', 'image')
-def gse_gis(text):
+def gse_gis(text, chan):
     """<query> -- Returns first Google Images result for <query>."""
+    if chan in opt_out:
+        return
     if not dev_key:
         return "This command requires a Google Developers Console API key."
     if not cx:
@@ -68,7 +71,7 @@ def gse_gis(text):
         result = parsed['items'][0]
         metadata = parsed['items'][0]['image']
     except KeyError:
-        return "No results found."
+        return "No results found or I am out of free searches for the day. Try .bis or .gif"
 
     dimens = '{}x{}px'.format(metadata['width'], metadata['height'])
     size = filesize.size(int(metadata['byteSize']))

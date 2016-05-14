@@ -55,8 +55,8 @@ def gse(text):
 
     return u'{} -- \x02{}\x02: "{}"'.format(result['link'], title, content)
 
-@hook.command('gseis', 'gis', 'image')
-def gse_gis(text, chan):
+@hook.command('gseis', 'image')
+def gse_gis(text):
     """<query> -- Returns first Google Images result for <query>."""
     if chan in opt_out:
         return

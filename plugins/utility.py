@@ -142,7 +142,7 @@ def base64_encode(text):
 def base64_decode(text, notice, message):
     """<string> -- Decode <string> with base64."""
     try:
-        message(base64.b64decode(text.encode()).decode())
+        return " ".join(base64.b64decode(text.encode()).decode().splitlines())
     except binascii.Error:
         notice("Invalid base64 string '{}'".format(text))
 
@@ -162,14 +162,14 @@ def base64_check(text):
 def unescape(text, message):
     """<string> -- Unicode unescapes <string>."""
     decoder = codecs.getdecoder("unicode_escape")
-    message(decoder(text)[0])
+    return " ".join(decoder(text)[0].splitlines())
 
 
 @hook.command
 def escape(text):
     """<string> -- Unicode escapes <string>."""
     encoder = codecs.getencoder("unicode_escape")
-    return encoder(text)[0].decode()
+    return " ".join(encoder(text)[0].decode().splitlines())
 
 
 # length

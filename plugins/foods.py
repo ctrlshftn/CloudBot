@@ -10,6 +10,8 @@ from cloudbot.util import textgen
 
 nick_re = re.compile("^[A-Za-z0-9_|.\-\]\[\{\}]*$", re.I)
 
+opt_out = ['#soberloners']
+
 cakes = ['Chocolate', 'Ice Cream', 'Angel', 'Boston Cream', 'Birthday', 'Bundt', 'Carrot', 'Coffee', 'Devils', 'Fruit',
          'Gingerbread', 'Pound', 'Red Velvet', 'Stack', 'Welsh', 'Yokan']
 
@@ -287,8 +289,11 @@ def keto(text, action):
 
 @asyncio.coroutine
 @hook.command
-def beer(text, action):
+def beer(text, action, chan):
     """<user> - give beer to <user>"""
+    if chan in opt_out:
+        return
+
     user = text.strip()
 
     if not is_valid(user):
@@ -386,8 +391,10 @@ def brekkie(text, action):
 
 @asyncio.coroutine
 @hook.command("doobie")
-def doobie(text, action):
+def doobie(text, action, chan):
     """<user> - pass the doobie to <user>"""
+    if chan in opt_out:
+        return
     user = text.strip()
 
     if not is_valid(user):

@@ -50,20 +50,20 @@ def _setup():
                 "level": "INFO",
                 "stream": "ext://sys.stdout"
             },
-            "file": {
-                "class": "logging.handlers.RotatingFileHandler",
-                "maxBytes": 1000000,
-                "backupCount": 5,
-                "formatter": "full",
-                "level": "INFO",
-                "encoding": "utf-8",
-                "filename": os.path.join(logging_dir, "bot.log")
-            }
+#            "file": {
+#                "class": "logging.handlers.RotatingFileHandler",
+#                "maxBytes": 1000000,
+#                "backupCount": 5,
+#                "formatter": "full",
+#                "level": "INFO",
+#                "encoding": "utf-8",
+#                "filename": os.path.join(logging_dir, "bot.log")
+#            }
         },
         "loggers": {
             "cloudbot": {
                 "level": "DEBUG",
-                "handlers": ["console", "file"]
+                "handlers": ["console"]
             }
         }
     }
@@ -75,7 +75,7 @@ def _setup():
             "handlers": ["console", "file"]
         }
 
-    if logging_config.get("file_debug", True):
+    if logging_config.get("file_debug", False):
         dict_config["handlers"]["debug_file"] = {
             "class": "logging.handlers.RotatingFileHandler",
             "maxBytes": 1000000,

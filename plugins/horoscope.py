@@ -14,7 +14,7 @@ def init(db):
 
 
 @hook.command(autohelp=False)
-def horoscope(text, db, bot, notice, nick, chan):
+def horoscope(text, db, bot, message, notice, nick, chan):
     """<sign> - get your horoscope"""
     if chan in ["#islam", "#stopdrinking"]:
         return "I didn't think people in here cared about horoscopes."
@@ -61,4 +61,4 @@ def horoscope(text, db, bot, notice, nick, chan):
                    {'nick': nick.lower(), 'sign': sign})
         db.commit()
 
-    return result
+    message(result)

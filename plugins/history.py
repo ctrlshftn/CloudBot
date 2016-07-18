@@ -9,6 +9,7 @@ from cloudbot.event import EventType
 
 db_ready = []
 
+opt_out = ['#anxiety']
 
 def db_init(db, conn_name):
     """check to see that our db has the the seen table (connection name is for caching the result per connection)
@@ -91,7 +92,8 @@ def seen(text, nick, chan, db, event, conn):
     :type event: cloudbot.event.Event
     :type conn: cloudbot.client.Client
     """
-
+    if chan in opt_out:
+        return
     if event.conn.nick.lower() == text.lower():
         return "You need to get your eyes checked."
 

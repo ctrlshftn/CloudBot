@@ -2,7 +2,7 @@ from cloudbot import hook
 from cloudbot.util import http, web
 
 
-@hook.command("wouldyou", autohelp=False)
+#@hook.command("wouldyou", autohelp=False)
 def wouldyourather_first():
     """Asks a would you rather question"""
     

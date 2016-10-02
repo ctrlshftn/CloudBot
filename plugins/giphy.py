@@ -5,6 +5,8 @@ from cloudbot import hook
 
 api_url = 'http://api.giphy.com/v1/gifs'
 
+opt_out = ["#sandersforpresident"]
+
 @hook.on_start()
 def load_api(bot):
     """Loads the API key. Check here for the public api key: https://github.com/Giphy/GiphyAPI"""
@@ -14,6 +16,8 @@ def load_api(bot):
 @hook.command("gif", "giphy")
 def giphy(text, chan):
     """Searches giphy.com for a gif using the provided search term."""
+    if chan in opt_out:
+        return
     term = text.strip()
     search_url = api_url + '/search'
     params = {

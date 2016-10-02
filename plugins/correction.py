@@ -6,7 +6,9 @@ from cloudbot.util.formatting import ireplace
 
 correction_re = re.compile(r"^[sS]/(.*/.*(?:/[igx]{,4})?)\S*$")
 
-
+def shorten_msg(msg):
+    out = (msg[:500]) if len(msg) > 500 else msg
+    return out
 @hook.regex(correction_re)
 def correction(match, conn, nick, chan, message):
     """
@@ -29,13 +31,13 @@ def correction(match, conn, nick, chan, message):
         if find.lower() in msg.lower():
             if "\x01ACTION" in msg:
                 msg = msg.replace("\x01ACTION", "").replace("\x01", "")
-                mod_msg = ireplace(msg, find, "\x02" + replace + "\x02")
+                mod_msg = shorten_msg(ireplace(msg, find, "\x02" + replace + "\x02"))
                 message("Correction, * {} {}".format(name, mod_msg))
             else:
-                mod_msg = ireplace(msg, find, "\x02" + replace + "\x02")
+                mod_msg = shorten_msg(ireplace(msg, find, "\x02" + replace + "\x02"))
                 message("Correction, <{}> {}".format(name, mod_msg))
 
-            msg = ireplace(msg, find, replace)
+            msg = shorten_msg(ireplace(msg, find, replace))
             if nick.lower() in name.lower():
                 conn.history[chan].append((name, timestamp, msg))
             return

@@ -67,6 +67,7 @@ def check_db(loop):
 
 @asyncio.coroutine
 @hook.on_start
+@hook.command(permissions=['botcontrol'])
 def load_geoip(loop):
     asyncio.async(check_db(loop), loop=loop)
 

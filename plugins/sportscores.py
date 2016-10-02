@@ -3,6 +3,8 @@ from collections import defaultdict
 from cloudbot import hook
 from cloudbot.util import http
 
+opt_out = ['#redditsquaredcircle']
+
 search_pages = defaultdict(list)
 
 def two_lines(bigstring, chan):
@@ -23,7 +25,7 @@ def smart_truncate(content, length=400, suffix='...\n'):
 
 
 @hook.command("morescore", autohelp=False)
-def moregrab(text, chan):
+def morescore(text, chan):
     """if a score list has lots of results the results are pagintated. If the most recent search is paginated the pages are stored for retreival. If no argument is given the next page will be returned else a page number can be specified."""
     if not search_pages[chan]:
         return "There are no score pages to show."
@@ -47,6 +49,8 @@ def moregrab(text, chan):
 @hook.command("nfl", autohelp=False)
 def nflScores(chan, text=" "):
     """nfl <team> gets the score or next schedule game for the specified team. If no team specified all games will be included."""
+    if chan in opt_out:
+        return
     search_pages[chan] = []
     search_pages[chan+"index"] = 0
     response = http.get_html('http://scores.espn.go.com/nfl/bottomline/scores', decode=False)
@@ -70,6 +74,8 @@ def nflScores(chan, text=" "):
 @hook.command("mlb", autohelp=False)
 def mlbScores(chan, text=" "):
     """mlb <team city> gets the score or next scheduled game for the specified team. If no team is specified all games will be included."""
+    if chan in opt_out:
+        return
     search_pages[chan] = []
     search_pages[chan+"index"] = 0
     response = http.get_html('http://scores.espn.go.com/mlb/bottomline/scores', decode=False)
@@ -93,6 +99,8 @@ def mlbScores(chan, text=" "):
 @hook.command("nba", autohelp=False)
 def nbaScores(chan, text=" "):
     """nba <team city> gets the score or next scheduled game for the specified team. If no team is specified all games will be included."""
+    if chan in opt_out:
+        return
     search_pages[chan] = []
     search_pages[chan+"index"] = 0
     response = http.get_html('http://scores.espn.go.com/nba/bottomline/scores', decode=False)
@@ -116,6 +124,8 @@ def nbaScores(chan, text=" "):
 @hook.command("ncaab", autohelp=False)
 def ncaabScores(chan, text=" "):
     """ncaab <team city> gets the score or next scheduled game for the specified team. If no team is specified all games will be included."""
+    if chan in opt_out:
+        return
     search_pages[chan] = []
     search_pages[chan+"index"] = 0
     response = http.get_html('http://scores.espn.go.com/ncb/bottomline/scores', decode=False)
@@ -139,6 +149,8 @@ def ncaabScores(chan, text=" "):
 @hook.command("ncaaf", autohelp=False)
 def ncaafScores(chan, text=" "):
     """ncaaf <team city> gets the score or next scheduled game for the specified team. If no team is specified all games will be included."""
+    if chan in opt_out:
+        return
     search_pages[chan] = []
     search_pages[chan+"index"] = 0
     response = http.get_html('http://scores.espn.go.com/ncf/bottomline/scores', decode=False)
@@ -162,6 +174,8 @@ def ncaafScores(chan, text=" "):
 @hook.command("nhl", autohelp=False)
 def nhlScores(chan, text=" "):
     """nhl <team city> gets the score or next scheduled game for the specified team. If no team is specified all games will be included."""
+    if chan in opt_out:
+        return
     search_pages[chan] = []
     search_pages[chan+"index"] = 0
     response = http.get_html('http://scores.espn.go.com/nhl/bottomline/scores', decode=False)
@@ -184,6 +198,8 @@ def nhlScores(chan, text=" "):
 @hook.command("wnba", autohelp=False)
 def wnbaScores(chan, text=" "):
     """wnba <team city> gets the score or next scheduled game for the specified team. If no team is specified all games will be included."""
+    if chan in opt_out:
+        return
     search_pages[chan] = []
     search_pages[chan+"index"] = 0
     response = http.get_html('http://scores.espn.go.com/wnba/bottomline/scores', decode=False)

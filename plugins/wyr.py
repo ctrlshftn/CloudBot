@@ -21,7 +21,7 @@ from cloudbot import hook
 API_URL = "http://www.rrrather.com/botapi"
 FILTERED_TAGS = ()
 
-opt_out = ['#anxiety']
+opt_out = ['#anxiety', '#sandersforpresident']
 
 def get_wyr(headers):
     """ Gets a entry from the RRRather API and cleans up the data """

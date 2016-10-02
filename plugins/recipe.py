@@ -27,7 +27,7 @@ RANDOM_URL = SEARCH_URL + "/surprise"
 opt_out = ['#anxiety']
 
 # set this to true to censor this plugin!
-CENSOR = True
+CENSOR = False
 PHRASES = [
     "EAT SOME FUCKING \x02{}\x02",
     "YOU WON'T NOT MAKE SOME FUCKING \x02{}\x02",

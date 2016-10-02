@@ -7,7 +7,7 @@ from bs4 import BeautifulSoup
 import requests
 
 from cloudbot import hook
-  
+
 fml_cache = []
 mlia_cache = []
 opt_out = ['#anxiety']
@@ -57,7 +57,7 @@ def initial_refresh(loop):
 
 @asyncio.coroutine
 @hook.command(autohelp=False)
-def fml(reply, loop):
+def fml(reply, loop, chan):
     """- gets a random quote from fmylife.com"""
     if chan in opt_out:
         return

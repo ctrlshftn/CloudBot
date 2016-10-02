@@ -1,7 +1,6 @@
 import random
 import re
 import operator
-import json
 
 from time import time
 from collections import defaultdict
@@ -10,7 +9,6 @@ from sqlalchemy.sql import select
 from cloudbot import hook
 from cloudbot.event import EventType
 from cloudbot.util import database
-from cloudbot.util import web
 
 duck = [" ε=ε=ε=ε=ε=┌(；　・＿・)┘ ", " ε=ε=ε=ε=ε=ε=┌(๑ʘ∀ʘ)┘ ", " ===≡≡≡｡ﾟ┌(ﾟ´Д`ﾟ)┘ﾟ｡ ", " ・・・・・・・ᕕ(╯°□°)ᕗ " ]
 duck_tail = ["[¬º-°]¬", "(▼皿▼)", "←~∋(｡Ψ▼ｰ▼)∈", "∋━━o(｀∀´oメ）～→", "(˼●̙̂ ̟ ̟̎ ̟ ̘●̂˻)", "(;´༎ຶД༎ຶ`)", "(((༼•̫͡•༽)))"]
@@ -368,10 +366,8 @@ def friends(text, chan, conn, db):
             return "it appears no one has friended any monsters yet."
 
     topfriends = sorted(friends.items(), key=operator.itemgetter(1), reverse = True)
-    url = web.paste(json.dumps(topfriends, indent=4))
     out += ' • '.join(["{}: {}".format('\x02' + k[:1] + u'\u200b' + k[1:] + '\x02', str(v))  for k, v in topfriends])
     out = smart_truncate(out)
-    out += " " + url
     return out
 
 @hook.command("monsterkillers", autohelp=False)
@@ -413,9 +409,8 @@ def killers(text, chan, conn, db):
             return "it appears no on has killed any monsters yet."
 
     topkillers = sorted(killers.items(), key=operator.itemgetter(1), reverse = True)
-    url = web.paste(json.dumps(topkillers, indent=4))
     out += ' • '.join(["{}: {}".format('\x02' + k[:1] + u'\u200b' + k[1:] + '\x02', str(v))  for k, v in topkillers])
-    out = smart_truncate(out) + " " + url
+    out = smart_truncate(out)
     return out
 
 #@hook.command("monsterforgive", permissions=["op", "ignore"])

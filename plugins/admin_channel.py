@@ -1,7 +1,7 @@
 from cloudbot import hook
 
 
-logchannel = ""
+logchannel = "##gonzobot"
 
 def mode_cmd(mode, text, text_inp, chan, conn, notice, nick, message):
     """ generic mode setting function """

@@ -105,7 +105,7 @@ def flirt(text, conn, nick, chan, message):
 
 @asyncio.coroutine
 @hook.command("kill", "end")
-def kill(text, conn, nick, action):
+def kill(text, conn, nick, action, chan):
     """<user> - kills <user>"""
     target = text.strip()
     if chan in opt_out:

@@ -2,7 +2,7 @@ import random
 import time
 
 from cloudbot import hook
-
+ 
 opt_out = ['#anxiety']
 
 rooms = ["courtyard", "guest house", "observatory", "theatre", "drawing room", "garage", "spa", "master bedroom", "studio", "pool", "arcade", "beach house", "surf shop", "kitchen", "ballroom", "conservatory", "billiard room", "library", "study", "hallway", "lounge", "dining room", "cellar"]
@@ -16,7 +16,7 @@ glomps = ["glomps", "tackles", "tackle hugs", "sexually glomps", "takes a flying
 usrcache = []
 #glob_chan = chan
 
-@hook.command(autohelp=False)
+#@hook.command(autohelp=False)
 def hookup(db, conn, chan):
     """matches two users from the channel in a sultry scene."""
     if chan in opt_out:

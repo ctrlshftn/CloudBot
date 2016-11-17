@@ -7,6 +7,8 @@ import asyncio
 from cloudbot import hook
 from cloudbot.util import textgen
 
+opt_out = ['#aspergers']
+
 @hook.on_start()
 def load_trumps(bot):
     """
@@ -19,8 +21,10 @@ def load_trumps(bot):
 
 @asyncio.coroutine
 @hook.command
-def trump(text, action):
+def trump(text, action, chan):
     """trump a user."""
+    if chan in opt_out:
+        return
     user = text.strip()
     generator = textgen.TextGenerator(trump_data["templates"], trump_data["parts"], variables={"user": user})
     action(generator.generate_string())

@@ -67,7 +67,7 @@ def welcome(nick, action, message, chan, event, db, conn):
     # freenode uncomment then next line
     # chan = event.irc_raw.split('JOIN ')[1].lower()
     # snoonet
-    decoy = re.compile('[oO0öøóóȯôőŏᴏō](<|>|＜)')
+    decoy = re.compile('[o○O0öøóóȯôőŏᴏōο](<|>|＜)')
     colors_re = re.compile("\x03(?:\d{1,2}(?:,\d{1,2})?)?", re.UNICODE)
     bino_re = re.compile('b+i+n+o+', re.IGNORECASE)
     offensive_re = re.compile('卐')

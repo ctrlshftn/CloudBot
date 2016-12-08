@@ -46,7 +46,7 @@ def herald(text, nick, chan, db, conn):
         db.execute("insert or replace into herald(name, chan, quote) values(:name, :chan, :quote)", {
                    'name': nick.lower(), 'chan': chan, 'quote': text})
         db.commit()
-        return("greeting successfully added, NOTE: Heralds are currently disabled.")
+        return("greeting successfully added.")
 
 @hook.command(permissions=["botcontrol", "snoonetstaff"])
 def deleteherald(text, chan, db, conn):

@@ -62,7 +62,7 @@ def deleteherald(text, chan, db, conn):
     else:
         return "{} does not have a herald".format(text.lower())
 
-#@hook.irc_raw("JOIN", singlethread=True)
+@hook.irc_raw("JOIN", singlethread=True)
 def welcome(nick, action, message, chan, event, db, conn):
     # For some reason chan isn't passed correctly. The below hack is sloppy and may need to be adjusted for different networks.
     # If someone knows how to get the channel a better way please fix this.

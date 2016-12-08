@@ -7,7 +7,7 @@ from plugins import grab
 import random
 
 db_ready = []
-
+opt_out = ['#modtalk', '#casualconversation', '#anxiety', '#reddit', '#snoonet', '#games', '#newzealand', '#badsubhub', '#showgoat', '#random', '#xboxone', '#playstation', '#groove', '#longdistance', '#destinythegame', '#dramaland', '#warhammer', '#r4r', '#redditsquaredcircle', '#sweden', '#drama', '#serbia','#foreveralone']
 
 def db_init(db, conn_name):
     """Check to see if the DB has the herald table. Connection name is for caching the result per connection.
@@ -44,7 +44,7 @@ def herald(text, nick, chan, db, conn):
         db.execute("insert or replace into herald(name, chan, quote) values(:name, :chan, :quote)", {
                    'name': nick.lower(), 'chan': chan, 'quote': text})
         db.commit()
-        return("greeting successfully added")
+        return("greeting successfully added, NOTE: Heralds are currently disabled.")
 
 @hook.command(permissions=["botcontrol", "snoonetstaff"])
 def deleteherald(text, chan, db, conn):
@@ -60,7 +60,7 @@ def deleteherald(text, chan, db, conn):
     else:
         return "{} does not have a herald".format(text.lower())
 
-@hook.irc_raw("JOIN", singlethread=True)
+#@hook.irc_raw("JOIN", singlethread=True)
 def welcome(nick, action, message, chan, event, db, conn):
     # For some reason chan isn't passed correctly. The below hack is sloppy and may need to be adjusted for different networks.
     # If someone knows how to get the channel a better way please fix this.
@@ -75,7 +75,7 @@ def welcome(nick, action, message, chan, event, db, conn):
         chan = event.irc_raw.split(':')[2].lower()  
     except:
         return
-    if chan in ['#modtalk', '#casualconversation', '#anxiety', '#reddit', '#snoonet', '#games', '#newzealand', '#badsubhub', '#showgoat', '#random', '#xboxone', '#playstation', '#groove', '#longdistance', '#destinythegame', '#dramaland', '#warhammer', '#r4r', '#redditsquaredcircle', '#sweden', '#drama', '#serbia','#foreveralone']:
+    if chan in opt_out:
         return
 
     welcome = db.execute("select quote from herald where name = :name and chan = :chan", {

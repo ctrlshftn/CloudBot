@@ -147,6 +147,12 @@ def getartisttags(artist, bot):
     request = requests.get(api_url, params = params, timeout=3)
     tags = request.json()
 
+    # Don't show tags from this list
+    blacklist = [
+    "seen live",
+    artist,
+    ]
+
     # if artist doesn't exist return no tags
     if tags.get("error") == 6:
         return "no tags"
@@ -154,7 +160,7 @@ def getartisttags(artist, bot):
     if 'tag' in tags['toptags']:
         for item in tags['toptags']['tag']:
             try:
-                if not item['name'] == "seen live":
+                if not item['name'] in blacklist:
                     tag_list.append(item['name'])
                 else:
                     pass

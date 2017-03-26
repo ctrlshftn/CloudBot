@@ -111,7 +111,7 @@ def points(text, chan, db, conn):
     score = 0
     karma = ""
     thing = ""
-    if text.endswith("-global"):
+    if text.endswith("-global") or text.endswith(" global"):
         thing = text[:-7].strip()
         karma = db.execute("select score from karma where thing = :thing and chan like :chan", {'thing': thing.lower(), 'chan':'#%'}).fetchall()
     else:
@@ -142,8 +142,8 @@ def pointstop(text, chan, db, message, conn, notice):
     points = defaultdict(int)
     items = ""
     out = ""
-    if text == "global":
-        items = db.execute("select thing, score from karma where chan like :chan and chan not in ('#srotd')", {'chan':'#%'}).fetchall()
+    if text == "global" or text == "-global":
+        items = db.execute("select thing, score from karma").fetchall()
         out = "The top {} favorite things in all channels are: "
     else:
         items = db.execute("select thing, score from karma where chan = :chan", {'chan':chan}).fetchall()
@@ -174,8 +174,8 @@ def pointsbottom(text, chan, db, message, conn, notice):
     points = defaultdict(int)
     items = ""
     out = ""
-    if text == "global":
-        items = db.execute("select thing, score from karma where chan like :chan and chan not in ('#srotd')", {'chan':'#%'}).fetchall()
+    if text == "global" or text == "-global":
+        items = db.execute("select thing, score from karma").fetchall()
         out = "The {} most hated things in all channels are: "
     else:
         items = db.execute("select thing, score from karma where chan = :chan", {'chan':chan}).fetchall()

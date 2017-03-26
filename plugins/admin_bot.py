@@ -2,6 +2,7 @@ import asyncio
 import re
 
 from cloudbot import hook
+from cloudbot.util import formatting
 
 logchannel = "##gonzobot"
 
@@ -377,3 +378,15 @@ def me(text, conn, chan, message, nick):
     if logchannel:
             message("{} used ME to make me ACT \"{}\" in {}.".format(nick, text, channel), logchannel)
     conn.ctcp(channel, "ACTION", text)
+
+@asyncio.coroutine
+@hook.command(autohelp=False, permissions=["botcontrol"])
+def listchans(conn, chan, message, notice):
+    """-- Lists the current channels the bot is in"""
+    chans = ', '.join(sorted(conn.channels, key=lambda x: x.strip('#').lower()))
+    lines = formatting.chunk_str("I am currently in: {}".format(chans))
+    for line in lines:
+        if chan[:1] == "#":
+            notice(line)
+        else:
+            message(line)

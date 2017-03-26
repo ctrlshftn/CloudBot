@@ -8,7 +8,7 @@ from cloudbot.event import EventType
 karmaplus_re = re.compile('^.*\+\+$')
 karmaminus_re = re.compile('^.*\-\-$')
 db_ready = []
-opt_out = ['#anxiety', '#foreveralonewomen']
+opt_out = ['#anxiety', '#foreveralonewomen', '#linuxmasterrace']
 
 
 def db_init(db, conn_name):

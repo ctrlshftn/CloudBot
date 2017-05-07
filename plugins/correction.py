@@ -6,6 +6,10 @@ from cloudbot.util.formatting import ireplace
 
 correction_re = re.compile(r"^[sS]/(.*/.*(?:/[igx]{,4})?)\S*$")
 
+# define channels that want this plugin disabled.
+
+opt_out = ['#linuxmasterrace']
+
 def shorten_msg(msg):
     out = (msg[:500]) if len(msg) > 500 else msg
     return out
@@ -16,6 +20,8 @@ def correction(match, conn, nick, chan, message):
     :type conn: cloudbot.client.Client
     :type chan: str
     """
+    if chan in opt_out:
+        return
     groups = [b.replace("\/", "/") for b in re.split(r"(?<!\\)/", match.groups()[0])]
     find = groups[0]
     replace = groups[1]

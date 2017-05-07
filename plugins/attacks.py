@@ -10,7 +10,7 @@ from cloudbot.util import textgen
 
 nick_re = re.compile("^[A-Za-z0-9_|.\-\]\[\{\}]*$", re.I)
 
-opt_out = ['#anxiety', '#math', '#sandersforpresident', '#drama']
+opt_out = ['#anxiety', '#math', '#sandersforpresident', '#drama', '#linuxmasterrace']
 
 def is_valid(target):
     """ Checks if a string is a valid IRC nick. """

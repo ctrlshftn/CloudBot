@@ -14,3 +14,18 @@ def conncheck(nick, bot, notice):
             bot.connections[conn].connect()
         # Send a message from each irc network connection to the nick that issued the command
         bot.connections[conn].message(nick, "just letting you know I am here. {}".format(conn))
+
+
+@hook.command(permissions=["botcontrol"])
+def reconnect(text, notice, bot):
+    """This command is an effort to use the connect method to manually reconnect to a network if it has been disconnected."""
+    if text in bot.connections:
+        notice("You are asking me to reconnect to {}. I have that network in my config and will attempt to reconnect.".format(text))
+        bot.connections[text].connect()
+        print(dir(bot.connections[text]))
+        print("self._quit = {}, self._connected = {}, self._transport = {}".format(bot.connections[text]._quit, bot.connections[text]._connected, bot.connections[text]._transport ))
+        #bot.connections[text].close()
+        #bot.connections[text]._quit = False
+        
+    else:
+        notice("You are asking me to reconnect to {}. I do not have that network in my config please specify a valid network.".format(text))

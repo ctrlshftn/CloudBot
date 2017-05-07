@@ -19,6 +19,7 @@ traditional = [
     (1024 ** 0, 'B'),
     ]
 
+doxx_title = "Eve Ben Ezra"
 
 def bytesto(bytes, system = traditional):
     """ converts bytes to something """
@@ -30,7 +31,7 @@ def bytesto(bytes, system = traditional):
     return str(amount) + suffix
 
 @hook.regex(url_re)
-def print_url_title(message, match, chan):
+def print_url_title(message, match, chan, nick):
     if chan in opt_out:
         return
     HEADERS = {
@@ -53,5 +54,7 @@ def print_url_title(message, match, chan):
         html = BeautifulSoup(content)
         r.close()
         title = " ".join(html.title.text.strip().splitlines())
+        if doxx_title in title:
+            message("Nick {} just pasted {} in {} whose title matches a doxx url. Please investigate.".format(nick, match.group(), chan), "#staff")
         out = "Title: \x02{}\x02".format(title)
         message(out, chan)

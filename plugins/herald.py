@@ -7,7 +7,7 @@ from plugins import grab
 import random
 
 db_ready = []
-opt_out = ['#modtalk', '#casualconversation', '#anxiety', '#reddit', '#snoonet', '#games', '#newzealand', '#badsubhub', '#showgoat', '#random', '#xboxone', '#playstation', '#groove', '#longdistance', '#destinythegame', '#dramaland', '#warhammer', '#r4r', '#redditsquaredcircle', '#sweden', '#drama', '#serbia','#foreveralone']
+opt_out = ['#modtalk', '#casualconversation', '#anxiety', '#reddit', '#snoonet', '#games', '#newzealand', '#badsubhub', '#showgoat', '#random', '#xboxone', '#playstation', '#groove', '#longdistance', '#destinythegame', '#dramaland', '#warhammer', '#r4r', '#redditsquaredcircle', '#sweden', '#drama', '#serbia','#foreveralone', '#linuxmasterrace', '#gonzobot']
 delay = 10
 floodcheck = {}
 
@@ -71,7 +71,7 @@ def welcome(nick, action, message, chan, event, db, conn):
     # snoonet
     
     # regexes for replacements
-    decoy = re.compile('[o○O0öøóóȯôőŏᴏōο](<|>|＜)')
+    decoy = re.compile('[Òo○O0öøóóȯôőŏᴏōο](<|>|＜)')
     colors_re = re.compile("\x02|\x03(?:\d{1,2}(?:,\d{1,2})?)?", re.UNICODE)
     bino_re = re.compile('b+i+n+o+', re.IGNORECASE)
     offensive_re = re.compile('卐')

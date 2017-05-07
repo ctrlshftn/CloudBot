@@ -1,5 +1,4 @@
 import random
-import re
 import operator
 
 from time import time
@@ -246,7 +245,7 @@ def bang(nick, chan, message, db, conn, notice):
             conn.send(out)
             return
         return "There is no duck. What are you shooting at?"
-    else: 
+    else:
         game_status[network][chan]['shoot_time'] = time()
         deploy = game_status[network][chan]['duck_time']
         shoot = game_status[network][chan]['shoot_time']
@@ -363,7 +362,7 @@ def friends(text, chan, conn, db):
         scores = db.execute(select([table.c.name, table.c.befriend]) \
             .where(table.c.network == conn.name) \
             .order_by(desc(table.c.befriend)))
-        if scores:    
+        if scores:
             for row in scores:
                 if row[1] == 0:
                     continue

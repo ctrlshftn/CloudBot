@@ -8,7 +8,7 @@ from cloudbot.util import database
 search_pages = defaultdict(list)
 search_page_indexes = {}
 
-opt_out = ['#anxiety', '#writingprompts', '#drama']
+opt_out = ['#anxiety', '#writingprompts', '#drama', '#pufftown']
 
 table = Table(
     'grab',

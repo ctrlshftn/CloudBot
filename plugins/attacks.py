@@ -4,7 +4,7 @@ import json
 import os
 import random
 import re
-
+ 
 from cloudbot import hook
 from cloudbot.util import textgen
 
@@ -57,7 +57,7 @@ def load_attacks(bot):
 
 @asyncio.coroutine
 @hook.command
-def lart(text, conn, nick, action, is_nick_valid):
+def lart(text, chan, conn, nick, action, is_nick_valid):
     """<user> - LARTs <user>"""
     target = text.strip()
     # do not activate command for channels that opt out.
@@ -79,7 +79,7 @@ def lart(text, conn, nick, action, is_nick_valid):
 
 @asyncio.coroutine
 @hook.command("flirt", "sexup", "jackmeoff")
-def flirt(text, conn, nick, message, is_nick_valid):
+def flirt(text, chan, conn, nick, message, is_nick_valid):
     """<user> - flirts with <user>"""
     target = text.strip()
     if chan in opt_out:
@@ -97,7 +97,7 @@ def flirt(text, conn, nick, message, is_nick_valid):
 
 @asyncio.coroutine
 @hook.command("kill", "end")
-def kill(text, conn, nick, action, is_nick_valid):
+def kill(text, chan, conn, nick, action, is_nick_valid):
     """<user> - kills <user>"""
     target = text.strip()
     if chan in opt_out:
@@ -118,7 +118,7 @@ def kill(text, conn, nick, action, is_nick_valid):
 
 @asyncio.coroutine
 @hook.command
-def slap(text, action, nick, conn, is_nick_valid):
+def slap(text, chan, action, nick, conn, is_nick_valid):
     """<user> -- Makes the bot slap <user>."""
     target = text.strip()
     if chan in opt_out:
@@ -198,7 +198,7 @@ def nk(chan, message):
 
 @asyncio.coroutine
 @hook.command()
-def insult(text, conn, nick, notice, message, is_nick_valid):
+def insult(text, chan, conn, nick, notice, message, is_nick_valid):
     """<user> - insults <user>
     :type text: str
     :type conn: cloudbot.client.Client

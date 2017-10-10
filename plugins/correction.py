@@ -8,7 +8,7 @@ correction_re = re.compile(r"^[sS]/(.*/.*(?:/[igx]{,4})?)\S*$")
 
 # define channels that want this plugin disabled.
 
-opt_out = ['#linuxmasterrace']
+opt_out = []
 
 def shorten_msg(msg):
     out = (msg[:500]) if len(msg) > 500 else msg

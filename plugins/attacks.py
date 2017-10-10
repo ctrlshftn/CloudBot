@@ -57,11 +57,7 @@ def load_attacks(bot):
 
 @asyncio.coroutine
 @hook.command
-<<<<<<< HEAD
-def lart(text, conn, chan, nick, action):
-=======
 def lart(text, conn, nick, action, is_nick_valid):
->>>>>>> 4c53fc2bd502d2365ba5dc08b64f0d7821712acb
     """<user> - LARTs <user>"""
     target = text.strip()
     # do not activate command for channels that opt out.
@@ -83,11 +79,7 @@ def lart(text, conn, nick, action, is_nick_valid):
 
 @asyncio.coroutine
 @hook.command("flirt", "sexup", "jackmeoff")
-<<<<<<< HEAD
-def flirt(text, conn, nick, chan, message):
-=======
 def flirt(text, conn, nick, message, is_nick_valid):
->>>>>>> 4c53fc2bd502d2365ba5dc08b64f0d7821712acb
     """<user> - flirts with <user>"""
     target = text.strip()
     if chan in opt_out:
@@ -105,11 +97,7 @@ def flirt(text, conn, nick, message, is_nick_valid):
 
 @asyncio.coroutine
 @hook.command("kill", "end")
-<<<<<<< HEAD
-def kill(text, conn, nick, action, chan):
-=======
 def kill(text, conn, nick, action, is_nick_valid):
->>>>>>> 4c53fc2bd502d2365ba5dc08b64f0d7821712acb
     """<user> - kills <user>"""
     target = text.strip()
     if chan in opt_out:
@@ -130,11 +118,7 @@ def kill(text, conn, nick, action, is_nick_valid):
 
 @asyncio.coroutine
 @hook.command
-<<<<<<< HEAD
-def slap(text, action, nick, chan, conn):
-=======
 def slap(text, action, nick, conn, is_nick_valid):
->>>>>>> 4c53fc2bd502d2365ba5dc08b64f0d7821712acb
     """<user> -- Makes the bot slap <user>."""
     target = text.strip()
     if chan in opt_out:
@@ -205,24 +189,16 @@ def strax(text, conn, message, nick, is_nick_valid):
 @hook.command(autohelp=False)
 def nk(chan, message):
     """outputs a random North Korea propoganda slogan"""
-<<<<<<< HEAD
     if chan in opt_out:
         return
-    index = random.randint(0,len(north_korea)-1)
-=======
     index = random.randint(0, len(north_korea) - 1)
->>>>>>> 4c53fc2bd502d2365ba5dc08b64f0d7821712acb
     slogan = north_korea[index]
     message(slogan, chan)
 
 
 @asyncio.coroutine
 @hook.command()
-<<<<<<< HEAD
-def insult(text, conn, nick, chan, notice, message):
-=======
 def insult(text, conn, nick, notice, message, is_nick_valid):
->>>>>>> 4c53fc2bd502d2365ba5dc08b64f0d7821712acb
     """<user> - insults <user>
     :type text: str
     :type conn: cloudbot.client.Client

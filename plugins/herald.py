@@ -6,7 +6,7 @@ from plugins import grab
 import random
 
 db_ready = []
-opt_out = ['#modtalk', '#casualconversation', '#anxiety', '#reddit', '#snoonet', '#games', '#newzealand', '#badsubhub', '#showgoat', '#random', '#xboxone', '#playstation', '#groove', '#longdistance', '#destinythegame', '#dramaland', '#warhammer', '#r4r', '#redditsquaredcircle', '#sweden', '#drama', '#serbia','#foreveralone', '#linuxmasterrace', '#gonzobot', '#f1', '#sweden', '#trackers']
+opt_out = ['#modtalk', '#casualconversation', '#anxiety', '#reddit', '#snoonet', '#games', '#newzealand', '#badsubhub', '#showgoat', '#random', '#xboxone', '#playstation', '#groove', '#longdistance', '#destinythegame', '#dramaland', '#warhammer', '#r4r', '#redditsquaredcircle', '#sweden', '#drama', '#serbia','#foreveralone', '#linuxmasterrace', '#gonzobot', '#f1', '#sweden', '#trackers', '#talk']
 delay = 10
 floodcheck = {}
 

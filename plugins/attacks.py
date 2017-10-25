@@ -1,27 +1,14 @@
 import json
 import re
-<<<<<<< HEAD
- 
-=======
 from collections import defaultdict
 from enum import Enum, unique
 from pathlib import Path
 
->>>>>>> 97d585d958827306f951f252fecec2f854501e1d
 from cloudbot import hook
 from cloudbot.util import textgen
 
 
 opt_out = ['#anxiety', '#math', '#sandersforpresident', '#drama', '#linuxmasterrace', '#bipolar']
-
-import json
-import re
-from collections import defaultdict
-from enum import Enum, unique
-from pathlib import Path
-
-from cloudbot import hook
-from cloudbot.util import textgen
 
 
 @unique

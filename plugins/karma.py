@@ -26,8 +26,6 @@ karma_table = Table(
 def addpoint(text, nick, chan, db, conn):
     """<thing> - adds a point to the <thing>"""
 
-    if chan in opt_out:
-         return
     text = text.strip()
     karma = db.execute("select score from karma where name = :name and chan = :chan and thing = :thing", {'name': nick, 'chan': chan, 'thing': text.lower()}).fetchone()
     if karma:
@@ -57,8 +55,6 @@ def re_addpt(match, nick, chan, db, conn, notice):
 def rmpoint(text, nick, chan, db, conn):
     """<thing> - subtracts a point from the <thing>"""
 
-    if chan in opt_out:
-        return
     text = text.strip()
     karma = db.execute("select score from karma where name = :name and chan = :chan and thing = :thing", {'name': nick, 'chan': chan, 'thing': text.lower()}).fetchone()
     if karma:

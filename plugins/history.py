@@ -89,8 +89,6 @@ def seen(text, nick, chan, db, event):
     :type event: cloudbot.event.Event
     :type conn: cloudbot.client.Client
     """
-    if chan in opt_out:
-        return
     if event.conn.nick.lower() == text.lower():
         return "You need to get your eyes checked."
 

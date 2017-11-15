@@ -123,9 +123,5 @@ def bingimage(text, bot, chan):
 
     # join all the tags together in a comma separated string ("tag1, tag2, tag3")
     tag_text = ", ".join(tags)
-<<<<<<< HEAD
-    return '\x02Notice: The Bing API will stop working sometime in december because Microsoft is greedy as fuck and is removing the free search tier.\x02 {} ({})'.format(unescape(result["MediaUrl"]), tag_text)
-=======
 
     return '\x02Notice: The Bing API will stop working sometime soon because Microsoft is greedy as fuck and is removing the free search tier.\x02 {} ({})'.format(unescape(result["MediaUrl"]), tag_text)
->>>>>>> 15af7ef71d3cd306bd5282a7bcdcd6e7bf1a964b

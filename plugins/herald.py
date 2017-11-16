@@ -8,7 +8,7 @@ from cloudbot import hook
 
 from cloudbot.util import database
 
-opt_out = ['#modtalk', '#casualconversation', '#anxiety', '#reddit', '#snoonet', '#games', '#newzealand', '#badsubhub', '#showgoat', '#random', '#xboxone', '#playstation', '#groove', '#longdistance', '#destinythegame', '#dramaland', '#warhammer', '#r4r', '#redditsquaredcircle', '#sweden', '#drama', '#serbia','#foreveralone', '#linuxmasterrace', '#gonzobot', '#f1', '#sweden', '#trackers', '#talk', '#britishpolitics']
+opt_out = ['#modtalk', '#anxiety', '#games', '#newzealand', '#badsubhub', '#showgoat', '#random', '#xboxone', '#playstation', '#groove', '#longdistance', '#destinythegame', '#dramaland', '#warhammer', '#r4r', '#redditsquaredcircle', '#sweden', '#drama', '#serbia','#foreveralone', '#f1', '#sweden', '#trackers', '#britishpolitics']
 
 delay = 10
 floodcheck = {}

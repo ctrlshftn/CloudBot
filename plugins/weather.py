@@ -25,7 +25,7 @@ geocode_api = google_base + 'geocode/json'
 wunder_api = "http://api.wunderground.com/api/{}/forecast/geolookup/conditions/q/{}.json"
 
 # Define channels that have opted out of this command.
-opt_out = ["#linuxmasterrace"]
+opt_out = []
 
 
 # Change this to a ccTLD code (eg. uk, nz) to make results more targeted towards that specific country.

@@ -2,7 +2,7 @@ from cleverwrap import CleverWrap
 from cloudbot import hook
 
 # Define channels that have opted out of this command.
-opt_out = ['#linuxmasterrace']
+opt_out = []
  
 @hook.on_start()
 def get_key(bot):

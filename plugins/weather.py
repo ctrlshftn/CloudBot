@@ -24,10 +24,6 @@ geocode_api = google_base + 'geocode/json'
 
 wunder_api = "http://api.wunderground.com/api/{}/forecast/geolookup/conditions/q/{}.json"
 
-# Define channels that have opted out of this command.
-opt_out = []
-
-
 # Change this to a ccTLD code (eg. uk, nz) to make results more targeted towards that specific country.
 # <https://developers.google.com/maps/documentation/geocoding/#RegionCodes>
 bias = None
@@ -109,14 +105,12 @@ def get_location(nick):
     return location
 
 @hook.command("weather", "we", autohelp=False)
-def weather(text, reply, db, nick, chan, notice):
+def weather(text, reply, db, nick, notice):
     """weather <location> -- Gets weather data for <location>."""
     if not wunder_key:
         return "This command requires a Weather Underground API key."
     if not dev_key:
         return "This command requires a Google Developers Console API key."
-    if chan in opt_out:
-        return
 
     location = ""
     # If no input try the db

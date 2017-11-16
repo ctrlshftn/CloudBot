@@ -1,9 +1,6 @@
 from cleverwrap import CleverWrap
 from cloudbot import hook
 
-# Define channels that have opted out of this command.
-opt_out = []
- 
 @hook.on_start()
 def get_key(bot):
     global api_key, cb
@@ -11,10 +8,8 @@ def get_key(bot):
     cb = CleverWrap(api_key)
 
 @hook.command("ask", "gonzo", "gonzobot", "cleverbot", "cb")
-def chitchat(text, chan):
+def chitchat(text):
     """chat with cleverbot.com"""
-    if chan in opt_out:
-        return
     if not api_key:
         return "Please add an API key from http://www.cleverbot.com/api to enable this feature."
     return cb.say(text)

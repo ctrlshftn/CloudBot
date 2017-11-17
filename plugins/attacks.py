@@ -8,7 +8,7 @@ from cloudbot import hook
 from cloudbot.util import textgen
 
 
-opt_out = ['#anxiety', '#math', '#sandersforpresident', '#drama', '#bipolar']
+opt_out = ['#anxiety', '#math', '#drama', '#bipolar']
 
 
 @unique

@@ -16,7 +16,7 @@ API_URL = "https://api.datamarket.azure.com/Bing/Search/v1/Composite"
 # the default config just sets the filter to Moderate for all queries
 DEFAULT_FILTER = "Moderate"
 NSFW_FILTER = "Off"
-opt_out = ['#sandersforpresident', '#foreveralone']
+opt_out = ['#foreveralone']
 
 def unescape(s):
     if not s.strip():

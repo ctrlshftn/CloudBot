@@ -20,7 +20,7 @@ from cloudbot.util import formatting, filesize
 
 API_CS = 'https://www.googleapis.com/customsearch/v1'
 
-opt_out = ["#sandersforpresident"]
+opt_out = []
 
 @hook.on_start()
 def load_api(bot):

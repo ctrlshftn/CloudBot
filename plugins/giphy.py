@@ -5,7 +5,7 @@ from cloudbot import hook
 
 api_url = 'http://api.giphy.com/v1/gifs'
 
-opt_out = ["#sandersforpresident"]
+opt_out = []
 
 @hook.on_start()
 def load_api(bot):

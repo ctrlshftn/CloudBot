@@ -3,7 +3,7 @@ import traceback
 from cloudbot import hook
 from cloudbot.util import web
 
-logchannel = ""
+logchannel = "##gonzobot"
 
 
 @hook.post_hook

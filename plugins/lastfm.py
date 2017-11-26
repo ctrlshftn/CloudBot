@@ -272,6 +272,7 @@ def lastfm(event, db, text, nick, bot):
         load_cache(db)
     return out
 
+
 @hook.command("plays")
 def getuserartistplaycount(event, bot, text, nick):
     """[artist] - displays the current user's playcount for [artist]. You must have your username saved."""

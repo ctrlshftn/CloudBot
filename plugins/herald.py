@@ -1,7 +1,6 @@
 import random
 import re
 import time
-import random
 
 from sqlalchemy import Table, Column, String, PrimaryKeyConstraint, select
 

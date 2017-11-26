@@ -5,7 +5,6 @@ import requests
 from cloudbot import hook
 from cloudbot.util import formatting
 
-opt_out = []
 
 base_url = 'http://api.urbandictionary.com/v0'
 define_url = base_url + "/define"
@@ -13,10 +12,9 @@ random_url = base_url + "/random"
 
 
 @hook.command("urban", "u", autohelp=False)
-def urban(text, chan):
+def urban(text):
     """urban <phrase> [id] -- Looks up <phrase> on urbandictionary.com."""
-    if chan in opt_out:
-        return
+
     headers = {
         "Referer": "http://m.urbandictionary.com"
     }

@@ -5,7 +5,6 @@ import re
 
 from cloudbot import hook
 
-opt_out = []
 
 @hook.on_start()
 def load_jokes(bot):
@@ -43,19 +42,15 @@ def load_jokes(bot):
 
 
 @hook.command()
-def yomomma(text, chan, message, conn):
+def yomomma(text):
     """<nick> - tells a yo momma joke to <nick>"""
-    if chan in opt_out:
-        return
     target = text.strip()
     return '{}, {}'.format(target, random.choice(yo_momma).lower())
 
 
 @hook.command(autohelp=False)
-def doit(message, chan, conn):
+def doit(message):
     """- prints a do it line, example: mathmaticians do with a pencil"""
-    if chan in opt_out:
-        return
     message(random.choice(do_it))
 
 
@@ -94,10 +89,8 @@ def bookpun(message):
 
 
 @hook.command("boobs", "boobies")
-def boobies(text, chan, conn):
+def boobies(text):
     """- prints boobies!"""
-    if chan in opt_out:
-        return
     boob = "\u2299"
     out = text.strip()
     out = out.replace('o', boob).replace('O', boob).replace('0', boob)
@@ -108,8 +101,6 @@ def boobies(text, chan, conn):
 @hook.command("zombs", autohelp=False)
 def zombs(conn, chan):
     """prints some fucked up shit."""
-    if chan in opt_out:
-        return
     out = "\u2299\u2299\u0505\u0F0D\u0020\u0E88\u0020\u25DE\u0C6A\u25DF\u0E88\u0020\u0F0D\u0648"
     return out
 

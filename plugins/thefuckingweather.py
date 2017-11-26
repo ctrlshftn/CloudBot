@@ -18,8 +18,6 @@ from cloudbot import hook
 from bs4 import BeautifulSoup
 import urllib.parse
 
-opt_out = []
-
 DEGREE_SYMBOL = "F"
 
 
@@ -75,8 +73,6 @@ def get_weather(text, reply):
 
     If you need a degree symbol, you can use thefuckingweather.DEGREE_SYMBOL.
     """
-    if chan in opt_out:
-        return
     # Generate query string
     query = {"where": text}
 #    if celsius:

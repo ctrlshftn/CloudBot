@@ -16,7 +16,7 @@ API_URL = "https://api.datamarket.azure.com/Bing/Search/v1/Composite"
 # the default config just sets the filter to Moderate for all queries
 DEFAULT_FILTER = "Moderate"
 NSFW_FILTER = "Off"
-opt_out = ['#foreveralone']
+
 
 def unescape(s):
     if not s.strip():
@@ -72,11 +72,10 @@ def bing(text, bot):
 
 
 @hook.command("bingimage", "bis")
-def bingimage(text, bot, chan):
+def bingimage(text, bot):
     """<query> - returns the first bing image search result for <query>"""
     api_key = bot.config.get("api_keys", {}).get("bing_azure")
-    if chan in opt_out:
-        return
+
     # handle NSFW
     show_nsfw = text.endswith(" nsfw")
 

@@ -16,10 +16,8 @@ table = Table(
 
 
 @hook.command(autohelp=False)
-def horoscope(text, db, bot, message, notice, nick, chan):
+def horoscope(text, db, bot, notice, nick, message):
     """<sign> - get your horoscope"""
-    if chan in ["#islam", "#stopdrinking"]:
-        return "I didn't think people in here cared about horoscopes."
     signs = {
             'aries': '1',
             'taurus': '2',

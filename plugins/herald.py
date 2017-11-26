@@ -7,8 +7,7 @@ from sqlalchemy import Table, Column, String, PrimaryKeyConstraint, select
 from cloudbot import hook
 from cloudbot.util import database
 
-opt_out = ['#modtalk', '#games', '#newzealand', '#badsubhub', '#random', '#playstation', '#groove', '#longdistance', '#destinythegame', '#dramaland', '#warhammer', '#r4r', '#redditsquaredcircle', '#sweden', '#drama', '#serbia','#foreveralone', '#f1', '#sweden', '#trackers']
-
+opt_out = []
 delay = 10
 floodcheck = {}
 
@@ -118,5 +117,4 @@ def welcome(nick, message, db, bot, chan):
             message("DECOY DUCK --> {}".format(greet), chan)
         else:
             message("\u200b {}".format(greet), chan)
-    
         floodcheck[chan] = time.time()

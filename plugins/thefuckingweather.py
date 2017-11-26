@@ -18,7 +18,7 @@ from cloudbot import hook
 from bs4 import BeautifulSoup
 import urllib.parse
 
-opt_out = ['#anxiety']
+opt_out = []
 
 DEGREE_SYMBOL = "F"
 

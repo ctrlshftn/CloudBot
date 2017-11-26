@@ -12,7 +12,7 @@ from cloudbot.util.pager import paginated_list
 
 search_pages = defaultdict(dict)
 
-opt_out = ['#anxiety', '#writingprompts', '#drama', '#pufftown']
+opt_out = ['#writingprompts', '#drama', '#pufftown']
 
 table = Table(
     'grab',

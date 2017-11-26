@@ -9,7 +9,7 @@ from cloudbot import hook
 from cloudbot.util.textgen import TextGenerator
 
 
-opt_out = ['#anxiety']
+opt_out = []
 hookups = {}
 
 

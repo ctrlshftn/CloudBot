@@ -5,7 +5,7 @@ import re
 
 from cloudbot import hook
 
-opt_out = ['#anxiety']
+opt_out = []
 
 @hook.on_start()
 def load_jokes(bot):

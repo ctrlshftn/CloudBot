@@ -5,7 +5,7 @@ import requests
 from cloudbot import hook
 from cloudbot.util import formatting
 
-opt_out = ['#anxiety']
+opt_out = []
 
 base_url = 'http://api.urbandictionary.com/v0'
 define_url = base_url + "/define"

@@ -4,7 +4,7 @@ from cloudbot import hook
 
 from cloudbot.util.formatting import get_text_list
 
-opt_out = ['#anxiety']
+opt_out = []
 
 polls = {}
 

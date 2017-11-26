@@ -8,7 +8,7 @@ from sqlalchemy import Table, Column, String, PrimaryKeyConstraint, select
 from cloudbot import hook
 from cloudbot.util import database
 
-opt_out = ['#modtalk', '#anxiety', '#games', '#newzealand', '#badsubhub', '#showgoat', '#random', '#xboxone', '#playstation', '#groove', '#longdistance', '#destinythegame', '#dramaland', '#warhammer', '#r4r', '#redditsquaredcircle', '#sweden', '#drama', '#serbia','#foreveralone', '#f1', '#sweden', '#trackers', '#britishpolitics']
+opt_out = ['#modtalk', '#games', '#newzealand', '#badsubhub', '#showgoat', '#random', '#xboxone', '#playstation', '#groove', '#longdistance', '#destinythegame', '#dramaland', '#warhammer', '#r4r', '#redditsquaredcircle', '#sweden', '#drama', '#serbia','#foreveralone', '#f1', '#sweden', '#trackers', '#britishpolitics']
 
 delay = 10
 floodcheck = {}

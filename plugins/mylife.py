@@ -10,7 +10,7 @@ from cloudbot import hook
 
 fml_cache = []
 mlia_cache = []
-opt_out = ['#anxiety']
+opt_out = []
 
 @asyncio.coroutine
 def refresh_fml_cache(loop):

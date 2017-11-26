@@ -27,7 +27,7 @@ import binascii
 from cloudbot import hook
 from cloudbot.util import formatting, web, colors
 
-opt_out = ['#anxiety']
+opt_out = []
 
 COLORS = collections.OrderedDict([
     ('red', '\x0304'),

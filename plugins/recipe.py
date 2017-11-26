@@ -24,7 +24,7 @@ BASE_URL = "http://www.cookstr.com"
 SEARCH_URL = BASE_URL + "/searches"
 RANDOM_URL = SEARCH_URL + "/surprise"
 
-opt_out = ['#anxiety']
+opt_out = []
 
 # set this to true to censor this plugin!
 CENSOR = False

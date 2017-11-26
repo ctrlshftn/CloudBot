@@ -3,7 +3,7 @@ import random
 from cloudbot import hook
 from cloudbot.util import http, formatting
 
-opt_out = ['#anxiety']
+opt_out = []
 
 def api_get(kind, query):
     """Use the RESTful Google Search API"""

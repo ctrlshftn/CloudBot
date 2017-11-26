@@ -165,7 +165,7 @@ class PluginManager:
                     return
 
         # make sure to unload the previously loaded plugin from this path, if it was loaded.
-        if file_path in self.plugins:
+        if str(file_path) in self.plugins:
             yield from self.unload_plugin(file_path)
 
         module_name = "plugins.{}".format(title)
@@ -482,10 +482,10 @@ class PluginManager:
         try:
             out = yield from task
             ok = True
-        except Exception as e:
+        except Exception:
             logger.exception("Error in hook {}".format(hook.description))
             ok = False
-            out = e
+            out = sys.exc_info()
 
         hook.plugin.tasks.remove(task)
 
@@ -533,15 +533,26 @@ class PluginManager:
         else:
             coro = sieve.function(self.bot, event, hook)
 
+        result, error = None, None
         task = async_util.wrap_future(coro)
         sieve.plugin.tasks.append(task)
         try:
             result = yield from task
         except Exception:
             logger.exception("Error running sieve {} on {}:".format(sieve.description, hook.description))
-            result = None
+            error = sys.exc_info()
 
         sieve.plugin.tasks.remove(task)
+
+        post_event = partial(
+            PostHookEvent, launched_hook=sieve, launched_event=event, bot=event.bot,
+            conn=event.conn, result=result, error=error
+        )
+        for post_hook in self.hook_hooks["post"]:
+            success, res = yield from self.internal_launch(post_hook, post_event(hook=post_hook))
+            if success and res is False:
+                break
+
         return result
 
     @asyncio.coroutine

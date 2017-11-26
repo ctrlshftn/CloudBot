@@ -35,6 +35,7 @@ BASIC_FOOD = (
     BasicFood("brekkie", "brekkie", "brekkie", "brekky"),
     BasicFood("icecream", "icecream"),
     BasicFood("doobie", "a doobie"),
+    BasicFood("wine", "wine"),
     BasicFood("pizza", "pizza"),
     BasicFood("chocolate", "chocolate"),
     BasicFood("pasta", "pasta"),
@@ -51,6 +52,7 @@ BASIC_FOOD = (
     # <Luke> BRILLIANT
     BasicFood("potato", "a potato"),
     BasicFood("cookie", "a cookie", file="cookies.json"),
+    BasicFood("soup", "Some Soup"),
     BasicFood("halal", "food", "halal", "halaal"),
     BasicFood("kosher", "food"),
 )

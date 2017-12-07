@@ -8,9 +8,6 @@ from cloudbot import hook
 from cloudbot.util import textgen
 
 
-opt_out = ['#anxiety', '#math', '#sandersforpresident', '#drama', '#linuxmasterrace', '#bipolar']
-
-
 @unique
 class RespType(Enum):
     ACTION = 1

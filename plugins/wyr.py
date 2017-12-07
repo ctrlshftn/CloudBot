@@ -21,7 +21,6 @@ from cloudbot import hook
 API_URL = "http://www.rrrather.com/botapi"
 FILTERED_TAGS = ()
 
-opt_out = ['#anxiety', '#sandersforpresident']
 
 def get_wyr(headers):
     """ Gets a entry from the RRRather API and cleans up the data """
@@ -45,10 +44,8 @@ def get_wyr(headers):
 
 
 @hook.command("wyr", "wouldyourather", autohelp=False)
-def wyr(bot, chan):
+def wyr(bot):
     """ -- What would you rather do? """
-    if chan in opt_out:
-        return
     headers = {"User-Agent": bot.user_agent}
 
     # keep trying to get entries until we find one that is not filtered

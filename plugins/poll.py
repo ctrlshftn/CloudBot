@@ -4,7 +4,6 @@ from cloudbot import hook
 
 from cloudbot.util.formatting import get_text_list
 
-opt_out = ['#anxiety']
 
 polls = {}
 
@@ -67,8 +66,7 @@ class Poll:
 @hook.command()
 def poll(text, conn, nick, chan, message, reply):
     global polls
-    if chan in opt_out:
-        return
+
     # get poll ID
     uid = ":".join([conn.name, chan, nick]).lower()
 
@@ -108,8 +106,6 @@ def poll(text, conn, nick, chan, message, reply):
 def vote(text, nick, conn, chan, notice):
     """.vote <poll> <choice> - Vote on a poll; responds on error and silently records on success."""
     global polls
-    if chan in opt_out:
-        return
 
     if len(text.split(' ', 1)) == 2:
         _user, option = text.split(' ', 1)

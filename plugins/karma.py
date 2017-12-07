@@ -25,7 +25,6 @@ karma_table = Table(
 @hook.command("pp", "addpoint")
 def addpoint(text, nick, chan, db, conn):
     """<thing> - adds a point to the <thing>"""
-
     text = text.strip()
     karma = db.execute("select score from karma where name = :name and chan = :chan and thing = :thing", {'name': nick, 'chan': chan, 'thing': text.lower()}).fetchone()
     if karma:
@@ -54,7 +53,6 @@ def re_addpt(match, nick, chan, db, conn, notice):
 @hook.command("mm", "rmpoint")
 def rmpoint(text, nick, chan, db, conn):
     """<thing> - subtracts a point from the <thing>"""
-
     text = text.strip()
     karma = db.execute("select score from karma where name = :name and chan = :chan and thing = :thing", {'name': nick, 'chan': chan, 'thing': text.lower()}).fetchone()
     if karma:

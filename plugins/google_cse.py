@@ -20,7 +20,6 @@ from cloudbot.util import formatting, filesize
 
 API_CS = 'https://www.googleapis.com/customsearch/v1'
 
-opt_out = ["#sandersforpresident"]
 
 @hook.on_start()
 def load_api(bot):
@@ -58,8 +57,6 @@ def gse(text):
 @hook.command('gseis', 'image')
 def gse_gis(text):
     """<query> -- Returns first Google Images result for <query>."""
-    if chan in opt_out:
-        return
     if not dev_key:
         return "This command requires a Google Developers Console API key."
     if not cx:

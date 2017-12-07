@@ -12,8 +12,6 @@ from cloudbot.util.pager import paginated_list
 
 search_pages = defaultdict(dict)
 
-opt_out = ['#anxiety', '#writingprompts', '#drama', '#pufftown']
-
 table = Table(
     'grab',
     database.metadata,
@@ -48,8 +46,6 @@ def load_cache(db):
 @hook.command("moregrab", autohelp=False)
 def moregrab(text, chan, conn):
     """if a grab search has lots of results the results are pagintated. If the most recent search is paginated the pages are stored for retreival. If no argument is given the next page will be returned else a page number can be specified."""
-    if chan in opt_out:
-        return
     pages = search_pages[conn.name].get(chan)
     if not pages:
         return "There are no grabsearch pages to show."
@@ -101,8 +97,6 @@ def get_latest_line(conn, chan, nick):
 @hook.command()
 def grab(text, nick, chan, db, conn):
     """grab <nick> grabs the last message from the specified nick and adds it to the quote database"""
-    if chan.lower() in opt_out:
-        return
     if text.lower() == nick.lower():
         return "Didn't your mother teach you not to grab yourself?"
 
@@ -144,8 +138,6 @@ def format_grab(name, quote):
 @hook.command("lastgrab", "lgrab")
 def lastgrab(text, chan, message):
     """prints the last grabbed quote from <nick>."""
-    if chan.lower() in opt_out:
-        return
     lgrab = ""
     try:
         lgrab = grab_cache[chan][text.lower()][-1]
@@ -159,8 +151,6 @@ def lastgrab(text, chan, message):
 @hook.command("grabrandom", "grabr", autohelp=False)
 def grabrandom(text, chan, message):
     """grabs a random quote from the grab database"""
-    if chan.lower() in opt_out:
-        return
     grab = ""
     name = ""
     if text:
@@ -187,9 +177,6 @@ def grabrandom(text, chan, message):
 @hook.command("grabsearch", "grabs", autohelp=False)
 def grabsearch(text, chan, conn):
     """.grabsearch <text> matches "text" against nicks or grab strings in the database"""
-    if chan in opt_out:
-        return
-    out = ""
     result = []
     try:
         quotes = grab_cache[chan][text.lower()]

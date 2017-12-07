@@ -1,15 +1,13 @@
 import random
 import re
 import time
-import random
 
 from sqlalchemy import Table, Column, String, PrimaryKeyConstraint, select
 
 from cloudbot import hook
 from cloudbot.util import database
 
-opt_out = ['#modtalk', '#casualconversation', '#anxiety', '#reddit', '#snoonet', '#games', '#newzealand', '#badsubhub', '#showgoat', '#random', '#xboxone', '#playstation', '#groove', '#longdistance', '#destinythegame', '#dramaland', '#warhammer', '#r4r', '#redditsquaredcircle', '#sweden', '#drama', '#serbia','#foreveralone', '#linuxmasterrace', '#gonzobot', '#f1', '#sweden', '#trackers', '#talk', '#britishpolitics']
-
+opt_out = []
 delay = 10
 floodcheck = {}
 
@@ -119,5 +117,4 @@ def welcome(nick, message, db, bot, chan):
             message("DECOY DUCK --> {}".format(greet), chan)
         else:
             message("\u200b {}".format(greet), chan)
-    
         floodcheck[chan] = time.time()

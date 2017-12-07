@@ -6,9 +6,6 @@ from cloudbot.util.formatting import ireplace
 correction_re = re.compile(r"^[sS]/(?:(.*?)(?<!\\)/(.*?)(?:(?<!\\)/([igx]{,4}))?)\s*$")
 unescape_re = re.compile(r'\\(.)')
 
-# define channels that want this plugin disabled.
-
-opt_out = []
 
 def shorten_msg(msg):
     out = (msg[:500]) if len(msg) > 500 else msg

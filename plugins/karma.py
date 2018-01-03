@@ -130,7 +130,7 @@ def points(text, chan, db):
     thing = ""
     if text.endswith("-global") or text.endswith(" global"):
         thing = text[:-7].strip()
-        karma = db.execute("select score from karma where thing = :thing", {'thing': thing.lower()}).fetchall()
+        karma = db.execute("select score from karma where thing = :thing and chan like :chan", {'thing': thing.lower(), 'chan':'#%'}).fetchall()
     else:
         text = text.strip()
         karma = db.execute("select score from karma where thing = :thing and chan = :chan",

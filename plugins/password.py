@@ -70,7 +70,7 @@ def word_password(text, notice):
     try:
         length = int(text)
     except ValueError:
-        length = 3
+        length = 4
 
     if length > 10:
         notice("Maximum length is 50 characters.")

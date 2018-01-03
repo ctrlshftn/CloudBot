@@ -409,7 +409,6 @@ def friends(text, chan, conn, db):
     url = web.paste(json.dumps(topfriends, indent=4))
     out += ' • '.join(["{}: {}".format('\x02' + k[:1] + u'\u200b' + k[1:] + '\x02', str(v)) for k, v in topfriends])
     out = smart_truncate(out)
-    out += " " + url
     return out
 
 

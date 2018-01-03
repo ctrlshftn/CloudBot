@@ -308,6 +308,8 @@ def bang(nick, chan, message, db, conn, notice):
         if not random.random() <= chance and chance > .05:
             out = random.choice(miss) + " You can try again in 7 seconds."
             scripters[nick.lower()] = shoot + 7
+            if nick.lower() == "paradox":
+                scripters[nick.lower()] = shoot + 864000 
             return out
         if chance == .05:
             out += "You pulled the trigger in {} seconds, that's mighty fast. Are you sure you aren't a script? Take a 2 hour cool down.".format(
@@ -368,6 +370,8 @@ def befriend(nick, chan, message, db, conn, notice):
         if not random.random() <= chance and chance > .05:
             out = random.choice(miss) + " You can try again in 7 seconds."
             scripters[nick.lower()] = shoot + 7
+            if nick.lower() == "paradox":
+                scripters[nick.lower()] = shoot + 864000
             return out
         if chance == .05:
             out += "You tried friending that duck in {} seconds, that's mighty fast. Are you sure you aren't a script? Take a 2 hour cool down.".format(

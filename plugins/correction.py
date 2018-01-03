@@ -7,6 +7,9 @@ correction_re = re.compile(r"^[sS]/(?:(.*?)(?<!\\)/(.*?)(?:(?<!\\)/([igx]{,4}))?
 unescape_re = re.compile(r'\\(.)')
 
 
+def shorten_msg(msg):
+    out = (msg[:500]) if len(msg) > 500 else msg
+    return out
 @hook.regex(correction_re)
 def correction(match, conn, nick, chan, message):
     """

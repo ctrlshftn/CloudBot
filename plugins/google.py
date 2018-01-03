@@ -13,7 +13,6 @@ def api_get(kind, query):
 # @hook.command("googleimage", "gis", "image")
 def googleimage(text):
     """<query> - returns the first google image result for <query>"""
-
     parsed = api_get('images', text)
     if not 200 <= parsed['responseStatus'] < 300:
         raise IOError('error searching for images: {}: {}'.format(parsed['responseStatus'], ''))

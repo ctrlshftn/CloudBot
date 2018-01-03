@@ -24,7 +24,7 @@ SEARCH_URL = BASE_URL + "/searches"
 RANDOM_URL = SEARCH_URL + "/surprise"
 
 # set this to true to censor this plugin!
-CENSOR = True
+CENSOR = False
 PHRASES = [
     "EAT SOME FUCKING \x02{}\x02",
     "YOU WON'T NOT MAKE SOME FUCKING \x02{}\x02",

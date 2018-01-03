@@ -68,7 +68,7 @@ def gse_gis(text):
         result = parsed['items'][0]
         metadata = parsed['items'][0]['image']
     except KeyError:
-        return "No results found."
+        return "No results found or I am out of free searches for the day. Try .bis or .gif"
 
     dimens = '{}x{}px'.format(metadata['width'], metadata['height'])
     size = filesize.size(int(metadata['byteSize']))

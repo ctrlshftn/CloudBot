@@ -116,7 +116,7 @@ def incrementMsgCounter(event, conn):
     global game_status
     if event.chan in opt_out:
         return
-    if game_status[conn.name][event.chan]['game_on'] == 1 and game_status[conn.name][event.chan]['duck_status'] == 0:
+    if game_status[conn.name][event.chan]['game_on'] == 1 and game_status[conn.name][event.chan]['duck_status'] == 0 and "snoonet/bot/" not in event.host:
         game_status[conn.name][event.chan]['messages'] += 1
         if event.host not in game_status[conn.name][event.chan]['masks']:
             game_status[conn.name][event.chan]['masks'].append(event.host)
